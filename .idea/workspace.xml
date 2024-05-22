@@ -4,27 +4,104 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="008ef0d6-f6bf-4256-83ce-483df043c318" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/joueur.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/sprite0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/levelOne.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GraphicObject.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GraphicObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Monster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Player.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Zone.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Zone.java" afterDir="false" />
+    <list default="true" id="008ef0d6-f6bf-4256-83ce-483df043c318" name="Changes" comment="initial commit avancé">
+      <change afterPath="$PROJECT_DIR$/src/AttackChoiceEvent.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AttackChoiceEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BagCloseEvent.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BagCloseEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BagTransition$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BagTransition.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BagTransition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BattleDoneEvent.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BattleDoneEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BattleEvent.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BattleEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Capacite.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Capacite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Effet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Effet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FuiteEvent.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FuiteEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Item$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Item.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Monster$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Monster.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Player$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sprite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Type.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Type.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/World.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/World.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/css/attack.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/css/bag.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/css/fuite.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/csv/battleWorld.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/csv/world1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/csv/world1Collision.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/67574.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/8244.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/arbre.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/bag_background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/barrePV.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/battleArea.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/battleAreaGrass.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/haute_herbe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/herbe_claire.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/herbe_claire_angle_basD.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/herbe_claire_angle_basG.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/herbe_claire_angle_hautD.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/herbe_claire_angle_hautG.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/herbe_claire_bas.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/herbe_claire_droit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/herbe_claire_gauche.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/herbe_claire_haut.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/herbe_fonce.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/items.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/items/GéEnviDePasserEnIng2svp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/items/cocaine.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/items/corde.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/items/lunettesSoleil.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/items/nuclearBomba.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/items/potion.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/items/viagra.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/neige.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/nothing.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/pokemon/bobléponge.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/pokemon/charmillon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/pokemon/chenipan.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/pokemon/hoothoot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/pokemon/multiplat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/pokemon/passajotablo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/pokemon/passajotablo2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/pokemon/passajotabloCocained.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/pokemon/passajotabloCocained2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/pokemon/rattata.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/pokemon/roucool.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/pokemon/simularbre.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/pokemon/teddiursa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/pokemon/vigoroth.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/pokemon/wattouat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/pokemon/zigzaton.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/pokemon1Gen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/pokemon2Gen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/pokemon3Gen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/zone_texte.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/joueur.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/joueur.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/sprite0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GraphicObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GraphicObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphicObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zone.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zone.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,12 +111,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
+        <option value="CSS File" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/Main.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -63,6 +145,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;H:/Documents/Ing1-S2/Java/openjfx/lib&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -71,28 +154,42 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.35517243&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="H:\Documents\Ing1-S2\Java\levelOne\src\css" />
+      <recent name="H:\Documents\Ing1-S2\Java\levelOne\src" />
       <recent name="H:\Documents\Ing1-S2\Java\levelOne\img" />
       <recent name="H:\Documents\Ing1-S2\Java\levelOne" />
-      <recent name="H:\Documents\Ing1-S2\Java\levelOne\src" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="javac" />
+    </option>
   </component>
   <component name="RunManager">
     <configuration name="start" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/.jdks/openjdk-21.0.2" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.jeu.v1.Main" />
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="levelOne" />
-      <option name="PROGRAM_PARAMETERS" value="--module-path $PROJECT_DIR$/../openjfx/lib --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../openjfx/lib --add-modules javafx.controls,javafx.fxml" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -103,8 +200,39 @@
       <option name="presentableId" value="Default" />
       <updated>1712429633677</updated>
       <workItem from="1712429634695" duration="15644000" />
-      <workItem from="1712501638754" duration="3598000" />
+      <workItem from="1712501638754" duration="53286000" />
+      <workItem from="1712690220849" duration="27967000" />
+      <workItem from="1713100283587" duration="18448000" />
+      <workItem from="1713474047755" duration="53659000" />
+      <workItem from="1713961553055" duration="27100000" />
+      <workItem from="1714050032670" duration="173727000" />
+      <workItem from="1715258224453" duration="61134000" />
+      <workItem from="1715581520515" duration="204000" />
+      <workItem from="1715581964478" duration="11429000" />
+      <workItem from="1715676926102" duration="261000" />
+      <workItem from="1715677200932" duration="10026000" />
+      <workItem from="1715848140120" duration="402000" />
+      <workItem from="1715851742277" duration="2705000" />
+      <workItem from="1715929516880" duration="32308000" />
+      <workItem from="1716127438493" duration="264000" />
+      <workItem from="1716127722115" duration="602000" />
+      <workItem from="1716142130585" duration="24310000" />
+      <workItem from="1716279718365" duration="4493000" />
+      <workItem from="1716284476782" duration="3921000" />
+      <workItem from="1716293072507" duration="2033000" />
+      <workItem from="1716297858340" duration="138000" />
+      <workItem from="1716298001412" duration="264000" />
+      <workItem from="1716298475106" duration="53250000" />
     </task>
+    <task id="LOCAL-00001" summary="initial commit avancé">
+      <option name="closed" value="true" />
+      <created>1712513375064</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1712513375064</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -112,5 +240,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="initial commit avancé" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial commit avancé" />
   </component>
 </project>

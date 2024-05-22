@@ -1,0 +1,13 @@
+public enum Effet {
+    VITESSEMOINS,
+    DEFENSEMOINS,
+    ATTAQUEMOINS,
+    VITESSEPLUS,
+    DEFENSEPLUS,
+    ATTAQUEPLUS,
+    PVPLUS,
+    SUPERPVPLUS,
+    XPPLUS,
+    COCAINED,
+    NULL;
+}
