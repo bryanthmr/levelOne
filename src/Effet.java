@@ -10,5 +10,6 @@ public enum Effet {
     XPPLUS,
     COCAINED,
     UNCOCAINED,
+    DEALER,
     NULL;
 }

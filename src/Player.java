@@ -6,6 +6,7 @@ import javafx.beans.property.*;
 import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -538,8 +539,31 @@ public class Player {
                     }
 
                 }
+                else if(Objects.equals(world.getCollisionTab()[GridPane.getRowIndex(world.getChildren().get(i))][GridPane.getColumnIndex(world.getChildren().get(i))], "d")){
+                    this.setBougeable(false);
+                    this.getCorps().setTranslateX(previousX1);
+                    this.getCorps().setTranslateY(previousY1);
+                    mapPane.setTranslateX(previousX2);
+                    mapPane.setTranslateY(previousY2);
+                    ImageView dialog = new ImageView("img/zone_texte.png");
+                    Main.mapPane.getChildren().add(dialog);
+                    dialog.setFitWidth(800);
+                    dialog.setFitHeight(150);
+                    dialog.setLayoutX(0);
+                    dialog.setLayoutY(440);
+                    dialog.setTranslateX(previousX1);
+                    dialog.setTranslateY(previousY1);
+                    Label label = new Label(Main.dealer.getName()+":\n"+Main.dealer.getDialogue()[0]);
+                    label.setTranslateX(previousX1);
+                    label.setTranslateY(previousY1);
+                    label.setLayoutX(30);
+                    label.setLayoutY(470);
+                    label.setStyle("-fx-font-weight: bold;-fx-font-size: 20");
+                }
+
+
                 else{
-                    System.out.println("Collision 1");
+                    System.out.println("Collision "+world.getCollisionTab()[GridPane.getRowIndex(world.getChildren().get(i))][GridPane.getColumnIndex(world.getChildren().get(i))]);
                     this.getCorps().setTranslateX(previousX1);
                     this.getCorps().setTranslateY(previousY1);
                     mapPane.setTranslateX(previousX2);

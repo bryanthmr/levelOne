@@ -10,30 +10,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="008ef0d6-f6bf-4256-83ce-483df043c318" name="Changes" comment="initial commit avancé">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/levelOne_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/NPC.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/items/lunettesSoleil2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/items/lunettesSoleil3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/items/lunettesSoleil4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/pokemon/passajotabloUncocained.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/pokemon/passajotabloUncocained2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BagTransition$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/BagTransition$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BagTransition.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/BagTransition.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BagTransition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BagTransition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Effet.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Effet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Effet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Effet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Monster$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monster$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Monster.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monster.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/csv/world1Collision.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/csv/world1Collision.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,30 +54,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.Main.executor": "Run",
-    "Application.start.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "H:/Documents/Ing1-S2/Java/levelOne/out/artifacts/levelOne_jar",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.35517243",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.start.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;H:/Documents/Ing1-S2/Java/levelOne/out/artifacts/levelOne_jar&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.35517243&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="H:\Documents\Ing1-S2\Java\levelOne\src\css" />
@@ -157,6 +145,7 @@
       <workItem from="1716298475106" duration="70870000" />
       <workItem from="1716453513199" duration="281000" />
       <workItem from="1716454652168" duration="563000" />
+      <workItem from="1716474136463" duration="7050000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit avancé">
       <option name="closed" value="true" />

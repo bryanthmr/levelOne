@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -68,6 +69,9 @@ public class Main extends Application{
     public static Line pvBarre2;
     public static ImageView battleDialog;
     public static Label battleLabel;
+
+    public static NPC dealer;
+
 
     public static void main(String[] args){
         launch(args);
@@ -401,6 +405,11 @@ public class Main extends Application{
 
         player=new Player(900, "Bryan",items,new Monster(new ImageView("img/pokemon/passajotablo.png"),new ImageView("img/pokemon/passajotablo2.png"),1,10,1,1,50,0,new Capacite[]{},"Passajotablo"));
 
+
+        dealer = new NPC("Dealer",new String[]{"Hey, tu veux de la drogue ?","J'ai de la bonne cocaïne pour toi !"},new ImageView("img/npc/dealer.png"),Effet.DEALER,items,new int[]{1,0},false,new String[]{"Oui","Non"});
+        dealer.getSprite().setFitWidth(50);
+        dealer.getSprite().setFitHeight(50);
+
         scene = new Scene(mapPane, worldWidth, worldHeight);
         window.setWidth(W_WIDTH);
         window.setHeight(W_HEIGHT);
@@ -423,6 +432,12 @@ public class Main extends Application{
         //overlaySnow.setLayoutY(400);
 
         mapPane.getChildren().add(player.getCorps());
+        mapPane.getChildren().add(dealer.getSprite());
+        dealer.getSprite().setLayoutX(500);
+        dealer.getSprite().setLayoutY(500);
+        dealer.getSprite().setTranslateX(1550);
+        dealer.getSprite().setTranslateY(-330);
+
 
         player.getCorps().setLayoutX(characterX);
         player.getCorps().setLayoutY(characterY);
@@ -458,9 +473,10 @@ public class Main extends Application{
 
 
         scene.setOnKeyPressed(event -> {
-            if (Objects.requireNonNull(event.getCode()) == E){
+            if (Objects.requireNonNull(event.getCode()) == S){
                 BagTransition.transitionScene(window,1);
             }
+
             else if (Objects.requireNonNull(event.getCode()) == RIGHT && player.isBougeable()) {
 
                 player.updateSpriteRight();
