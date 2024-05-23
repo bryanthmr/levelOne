@@ -349,8 +349,7 @@ public class Main extends Application{
         battleLabel.setLayoutX(30);
         battleLabel.setLayoutY(470);
         battleLabel.setVisible(false);
-        battleLabel.setStyle("-fx-font-size: 50");
-        battleLabel.setStyle("-fx-font-weight: bold");
+        battleLabel.setStyle("-fx-font-weight: bold;-fx-font-size: 20");
         battleLabel.textProperty().bind(Player.labelProperty);
         OverlayPane.getChildren().add(battleLabel);
 
@@ -394,13 +393,13 @@ public class Main extends Application{
         Item[] items= new Item[]{new Item("Potion","normalement ça soigne ton pokémon",Effet.PVPLUS,1,new ImageView("img/items/potion.png")),
                 new Item("Bombe Nucléaire","Détruit le monde et arrête le jeu",Effet.PVPLUS,1,new ImageView("img/items/nuclearBomba.png")),
                 new Item("J'ai envie de passer en ing2 svp...","Vous rend plus riche que Jeff Bezos",Effet.PVPLUS,1,new ImageView("img/items/GéEnviDePasserEnIng2svp.png")),
-                new Item("Cocaïne","Met votre pokémon lv 999 pendant 10min",Effet.COCAINED,5,new ImageView("img/items/cocaine.png")),
+                new Item("Cocaïne","Met votre pokémon lv 999",Effet.COCAINED,5,new ImageView("img/items/cocaine.png")),
                 new Item("Viagra","Rend votre pokémon bien plus performant",Effet.PVPLUS,1,new ImageView("img/items/viagra.png")),
                 new Item("Corde","Au cas où après les partiels...",Effet.PVPLUS,1,new ImageView("img/items/corde.png")),
-                new Item("Lunettes de soleil","Sert à rien mais ça donne un style",Effet.PVPLUS,1,new ImageView("img/items/lunettesSoleil.png")),};
+                new Item("Lunettes de soleil","Annule l'effet de la cocaïne",Effet.UNCOCAINED,1,new ImageView("img/items/lunettesSoleil.png")),};
 
 
-        player=new Player(900, "Bryan",items,new Monster(new ImageView("img/pokemon/passajotablo.png"),new ImageView("img/pokemon/passajotablo2.png"),1,1,1,2,50,0,new Capacite[]{},"Passajotablo"));
+        player=new Player(900, "Bryan",items,new Monster(new ImageView("img/pokemon/passajotablo.png"),new ImageView("img/pokemon/passajotablo2.png"),1,10,1,1,50,0,new Capacite[]{},"Passajotablo"));
 
         scene = new Scene(mapPane, worldWidth, worldHeight);
         window.setWidth(W_WIDTH);

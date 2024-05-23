@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="levelOne:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/levelOne_jar</output-path>
+    <root id="archive" name="levelOne.jar">
+      <element id="module-output" name="levelOne" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../openjfx/lib/javafx-swt.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../openjfx/lib/javafx.web.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../openjfx/lib/javafx.base.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../openjfx/lib/javafx.fxml.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../openjfx/lib/javafx.media.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../openjfx/lib/javafx.swing.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../openjfx/lib/javafx.controls.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../openjfx/lib/javafx.graphics.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

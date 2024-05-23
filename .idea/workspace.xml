@@ -1,107 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="levelOne:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="008ef0d6-f6bf-4256-83ce-483df043c318" name="Changes" comment="initial commit avancé">
-      <change afterPath="$PROJECT_DIR$/src/AttackChoiceEvent.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AttackChoiceEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BagCloseEvent.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BagCloseEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BagTransition$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BagTransition.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BagTransition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BattleDoneEvent.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BattleDoneEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BattleEvent.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BattleEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Capacite.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Capacite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Effet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Effet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FuiteEvent.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FuiteEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Item$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Item.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Item.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Monster$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Monster.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Player$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sprite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Type.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Type.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/World.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/World.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/css/attack.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/css/bag.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/css/fuite.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/csv/battleWorld.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/csv/world1.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/csv/world1Collision.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/67574.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/8244.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/arbre.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/bag_background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/barrePV.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/battleArea.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/battleAreaGrass.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/haute_herbe.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/herbe_claire.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/herbe_claire_angle_basD.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/herbe_claire_angle_basG.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/herbe_claire_angle_hautD.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/herbe_claire_angle_hautG.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/herbe_claire_bas.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/herbe_claire_droit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/herbe_claire_gauche.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/herbe_claire_haut.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/herbe_fonce.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/items.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/items/GéEnviDePasserEnIng2svp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/items/cocaine.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/items/corde.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/items/lunettesSoleil.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/items/nuclearBomba.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/items/potion.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/items/viagra.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/neige.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/nothing.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/pokemon/bobléponge.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/pokemon/charmillon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/pokemon/chenipan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/pokemon/hoothoot.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/pokemon/multiplat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/pokemon/passajotablo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/pokemon/passajotablo2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/pokemon/passajotabloCocained.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/pokemon/passajotabloCocained2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/pokemon/rattata.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/pokemon/roucool.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/pokemon/simularbre.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/pokemon/teddiursa.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/pokemon/vigoroth.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/pokemon/wattouat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/pokemon/zigzaton.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/pokemon1Gen.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/pokemon2Gen.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/pokemon3Gen.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/zone_texte.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/levelOne_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/NPC.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/items/lunettesSoleil2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/items/lunettesSoleil3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/items/lunettesSoleil4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/pokemon/passajotabloUncocained.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/pokemon/passajotabloUncocained2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/joueur.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/joueur.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/sprite0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GraphicObject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GraphicObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphicObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BagTransition$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/BagTransition$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BagTransition.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/BagTransition.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BagTransition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BagTransition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Effet.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Effet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Effet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Effet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Item$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Monster$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monster$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Monster.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monster.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monster.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zone.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zone.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,30 +66,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.start.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;H:/Documents/Ing1-S2/Java/openjfx/lib&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.35517243&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Main.executor": "Run",
+    "Application.start.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "H:/Documents/Ing1-S2/Java/levelOne/out/artifacts/levelOne_jar",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.35517243",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="H:\Documents\Ing1-S2\Java\levelOne\src\css" />
@@ -222,7 +154,9 @@
       <workItem from="1716293072507" duration="2033000" />
       <workItem from="1716297858340" duration="138000" />
       <workItem from="1716298001412" duration="264000" />
-      <workItem from="1716298475106" duration="53250000" />
+      <workItem from="1716298475106" duration="70870000" />
+      <workItem from="1716453513199" duration="281000" />
+      <workItem from="1716454652168" duration="563000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit avancé">
       <option name="closed" value="true" />
@@ -237,6 +171,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

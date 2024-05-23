@@ -425,7 +425,7 @@ public class Player {
                 else if(Objects.equals(world.getCollisionTab()[GridPane.getRowIndex(world.getChildren().get(i))][GridPane.getColumnIndex(world.getChildren().get(i))], "2")){
                     System.out.println("collision2");
                     Random hasard= new Random();
-                    if (hasard.nextInt(100) == 0) {
+                    if (hasard.nextInt(500) == 0) {
                         this.setBougeable(false);
 
                         int[] limit = new int[2];
@@ -453,39 +453,39 @@ public class Player {
                             case "csv/world1.csv":
                                 switch(new Random().nextInt(12)){
                                     case 0:
-                                        m = new Monster(new ImageView("img/pokemon/chenipan.png"),10, 1000, 100, 5, 5, 0, monsterCapacities, "Chenipan");
+                                        m = new Monster(new ImageView("img/pokemon/chenipan.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "Chenipan");
                                         break;
                                     case 1:
-                                        m= new Monster(new ImageView("img/pokemon/rattata.png"),10, 1000, 100, 5, 5, 0, monsterCapacities, "Rattata");
+                                        m= new Monster(new ImageView("img/pokemon/rattata.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "Rattata");
                                         break;
                                     case 2:
-                                        m= new Monster(new ImageView("img/pokemon/roucool.png"),10, 1000, 100, 5, 5, 0, monsterCapacities, "Roucool");
+                                        m= new Monster(new ImageView("img/pokemon/roucool.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "Roucool");
                                         break;
                                     case 3:
-                                        m= new Monster(new ImageView("img/pokemon/teddiursa.png"),10, 1000, 100, 5, 5, 0, monsterCapacities, "Teddiursa");
+                                        m= new Monster(new ImageView("img/pokemon/teddiursa.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "Teddiursa");
                                         break;
                                     case 4:
-                                        m= new Monster(new ImageView("img/pokemon/simulabre.png"),10, 1000, 100, 5, 5, 0, monsterCapacities, "Simularbre");
+                                        m= new Monster(new ImageView("img/pokemon/simularbre.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "Simularbre");
                                     case 5:
-                                        m= new Monster(new ImageView("img/pokemon/wattouat.png"),10, 1000, 100, 5, 5, 0, monsterCapacities, "Wattouat");
+                                        m= new Monster(new ImageView("img/pokemon/wattouat.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "Wattouat");
                                         break;
                                     case 6:
-                                        m= new Monster(new ImageView("img/pokemon/hoothoot.png"),10, 1000, 100, 5, 5, 0, monsterCapacities, "Hoothoot");
+                                        m= new Monster(new ImageView("img/pokemon/hoothoot.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "Hoothoot");
                                         break;
                                     case 7:
-                                        m= new Monster(new ImageView("img/pokemon/vigoroth.png"),10, 1000, 100, 5, 5, 0, monsterCapacities, "Vigoroth");
+                                        m= new Monster(new ImageView("img/pokemon/vigoroth.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "Vigoroth");
                                         break;
                                     case 8:
-                                        m= new Monster(new ImageView("img/pokemon/charmillon.png"),10, 1000, 100, 5, 5, 0, monsterCapacities, "Charmillon");
+                                        m= new Monster(new ImageView("img/pokemon/charmillon.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "Charmillon");
                                         break;
                                     case 9:
-                                        m= new Monster(new ImageView("img/pokemon/zigzaton.png"),10, 1000, 100, 5, 5, 0, monsterCapacities, "Zigzaton");
+                                        m= new Monster(new ImageView("img/pokemon/zigzaton.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "Zigzaton");
                                         break;
                                     case 10:
-                                        m= new Monster(new ImageView("img/pokemon/bobléponge.png"),10, 1000, 100, 5, 5, 0, monsterCapacities, "bob");
+                                        m= new Monster(new ImageView("img/pokemon/bobléponge.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "bob");
                                         break;
                                     case 11:
-                                        m= new Monster(new ImageView("img/pokemon/multiplat.png"),10, 1000, 100, 5, 5, 0, monsterCapacities, "Fiat multiplat");
+                                        m= new Monster(new ImageView("img/pokemon/multiplat.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "Fiat multiplat");
                                         break;
                                 }
 

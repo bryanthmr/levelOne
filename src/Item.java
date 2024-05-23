@@ -25,10 +25,11 @@ public class Item {
         switch (effet) {
             case PVPLUS:
                 m.setPv(m.getPv()+(int)(m.getMaxPv()*0.3));
-
+                Main.player.myPvProperty.set((double)m.getPv()/m.getMaxPv()*163);
                 break;
             case SUPERPVPLUS:
                 m.setPv(m.getMaxPv());
+                Main.player.myPvProperty.set((double)m.getPv()/m.getMaxPv()*163);
                 break;
             case XPPLUS:
                 m.setXp((int)(m.getXp()*1.3));
@@ -36,8 +37,16 @@ public class Item {
             case COCAINED:
                 m.getSpriteFront().setImage(new Image("img/pokemon/passajotabloCocained2.png"));
                 m.getSpriteBack().setImage(new Image("img/pokemon/passajotabloCocained.png"));
+                m.realLv=m.getNiveau();
                 m.setNiveau(999);
+                Main.player.myLevelProperty.set(""+999);
 
+                break;
+            case UNCOCAINED:
+                m.getSpriteFront().setImage(new Image("img/pokemon/passajotabloUncocained2.png"));
+                m.getSpriteBack().setImage(new Image("img/pokemon/passajotabloUncocained.png"));
+                m.setNiveau(m.realLv);
+                Main.player.myLevelProperty.set(""+m.getNiveau());
                 break;
         }
         this.setQuantity(this.getQuantity()-1);

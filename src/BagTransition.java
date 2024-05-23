@@ -45,6 +45,8 @@ public class BagTransition {
     private static Label itemQuantity;
     private static Label itemName;
 
+    private static Label lvPokemon;
+
 
 
     public static void genGridPane() {
@@ -174,6 +176,15 @@ public class BagTransition {
         pvBarre.setLayoutX(50);
         pvBarre.setLayoutY(1);
         bagPane.getChildren().add(pvBarre);
+
+        lvPokemon = new Label(""+Main.player.getPoke().getNiveau());
+        lvPokemon.setLayoutX(220);
+        lvPokemon.setLayoutY(120);
+        lvPokemon.setTextFill(Color.BLACK);
+
+        lvPokemon.setStyle("-fx-font-weight: bold;-fx-font-size: 20px;");
+        lvPokemon.textProperty().bind(Main.player.myLevelProperty);
+        bagPane.getChildren().add(lvPokemon);
 
 
         b_sortir = new Button("Sortir");

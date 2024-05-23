@@ -9,5 +9,6 @@ public enum Effet {
     SUPERPVPLUS,
     XPPLUS,
     COCAINED,
+    UNCOCAINED,
     NULL;
 }

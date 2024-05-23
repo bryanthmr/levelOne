@@ -15,6 +15,8 @@ public class Monster {
     protected ImageView spriteFront;
     protected ImageView spriteBack;
 
+    public int realLv;
+
     public Monster(ImageView spriteFront, int force, int pv, int vitesse, int defense, int niveau, int xp, Capacite[] capacite, String nom) {
         this.spriteFront=spriteFront;
         this.force = force;
@@ -26,6 +28,7 @@ public class Monster {
         this.xp=xp;
         this.capacite = capacite;
         this.nom = nom;
+        this.realLv=niveau;
     }
 
     public Monster(ImageView spriteBack, ImageView spriteFront,int force, int pv, int vitesse, int defense, int niveau, int xp, Capacite[] capacite, String nom) {
@@ -40,6 +43,7 @@ public class Monster {
         this.nom = nom;
         this.spriteBack=spriteBack;
         this.spriteFront=spriteFront;
+        this.realLv=niveau;
     }
 
 
@@ -68,6 +72,7 @@ public class Monster {
                 System.out.println(m.getPv()+" "+m.getDefense()+" "+c.getDegat()+" "+this.getForce());
                 int degat= m.getDefense()-c.getDegat()-this.getForce();
                 System.out.println(degat);
+                System.out.println(m.getPv());
                 if(degat<0){
                     m.setPv(m.getPv()+degat);
 
@@ -86,15 +91,15 @@ public class Monster {
 
 
     public int getForce() {
-        return force;
+        return force*getNiveau();
     }
 
     public void setForce(int force) {
-        this.force = force;
+        this.force = force/this.getNiveau();
     }
 
     public int getPv() {
-        return pv;
+        return pv*getNiveau();
     }
 
     public void setPv(int pv) {
@@ -102,38 +107,38 @@ public class Monster {
 
             this.pv=0;
         }
-        else if(pv>maxPv){
-            System.out.println(this.getMaxPv());
+        else if(pv>getMaxPv()){
 
-            this.pv=this.getMaxPv();
+
+            this.pv=maxPv;
         }
         else{
-            this.pv=pv;
+            this.pv=(pv/this.getNiveau());
         }
 
     }
     public int getMaxPv() {
-        return maxPv;
+        return maxPv*getNiveau();
     }
 
     public void setMaxPv(int maxPv) {
-        this.maxPv = maxPv;
+        this.maxPv = maxPv/this.getNiveau();
     }
 
     public int getVitesse() {
-        return vitesse;
+        return vitesse*getNiveau();
     }
 
     public void setVitesse(int vitesse) {
-        this.vitesse = vitesse;
+        this.vitesse = vitesse/this.getNiveau();
     }
 
     public int getDefense() {
-        return defense;
+        return defense*getNiveau();
     }
 
     public void setDefense(int defense) {
-        this.defense = defense;
+        this.defense = defense/this.getNiveau();
     }
 
     public int getNiveau() {
