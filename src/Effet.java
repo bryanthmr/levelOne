@@ -11,5 +11,7 @@ public enum Effet {
     COCAINED,
     UNCOCAINED,
     DEALER,
+    BASTOS,
+    TRAINER,
     NULL;
 }

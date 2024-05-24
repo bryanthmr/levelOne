@@ -34,7 +34,7 @@ public class BagTransition {
     private static double e=0;
     public static Button b_sortir;
     public static Button b_use;
-    private static int k;
+    public static int k;
 
     private static Label pk_name;
     private static Line pvBarre;
@@ -56,7 +56,7 @@ public class BagTransition {
             if (Main.player.getInventaire()[m].getQuantity() > 0) {
 
 
-                if (m % 10 == 0) {
+                if (m % 8 == 0) {
                     n = 0;
                     l++;
                 }

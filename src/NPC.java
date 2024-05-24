@@ -11,7 +11,35 @@ public class NPC {
     private int[] haveResponse;
     private String[] response;
 
-    public NPC(String name, String[] dialogue, ImageView sprite, Effet effet, Item[] inventaire, int[] haveResponse, boolean isTrainer, String[] response) {
+    public boolean isMonster() {
+        return isMonster;
+    }
+
+    public void setMonster(boolean monster) {
+        isMonster = monster;
+    }
+
+    public boolean isMonster;
+
+    public boolean isInDialog() {
+        return inDialog;
+    }
+
+    public void setInDialog(boolean inDialog) {
+        this.inDialog = inDialog;
+    }
+
+    public boolean isTrainer() {
+        return isTrainer;
+    }
+
+    public void setTrainer(boolean trainer) {
+        isTrainer = trainer;
+    }
+
+    private boolean inDialog;
+
+    public NPC(String name, String[] dialogue,boolean isMonster, ImageView sprite, Effet effet, Item[] inventaire, int[] haveResponse, boolean isTrainer, String[] response) {
         this.name = name;
         this.dialogue = dialogue;
         this.sprite = sprite;
@@ -20,6 +48,8 @@ public class NPC {
         this.haveResponse = haveResponse;
         this.isTrainer = isTrainer;
         this.response = response;
+        this.inDialog=false;
+        this.isMonster=isMonster;
     }
 
 

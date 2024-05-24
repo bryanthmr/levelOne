@@ -6,6 +6,7 @@ import javafx.beans.property.*;
 import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,11 +15,9 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.security.Key;
-import java.sql.Time;
 import java.util.Objects;
 import java.util.Random;
-
+import java.util.concurrent.atomic.AtomicBoolean;
 
 
 public class Player {
@@ -63,6 +62,7 @@ public class Player {
 
     public static Timeline timeline;
 
+    private static int a=0;
 
     private Capacite playerChoice;
     private Capacite monsterChoice;
@@ -147,9 +147,12 @@ public class Player {
 
     private Capacite choixCapacite(){
         capaciteChoisie = null;
+
         Main.battleScene.addEventHandler(AttackChoiceEvent.ATTACK, event -> {
             capaciteChoisie=this.poke.getCapacite()[event.choice-1];
         });
+
+
 
         return capaciteChoisie;
 
@@ -159,21 +162,35 @@ public class Player {
     private void startTour(Monster monster) throws InterruptedException {
         System.out.printf("-----------------------%d-----------------",compteurTour++);
         playerChoice=null;
-        while(playerChoice==null) {
+        AtomicBoolean itemUsed= new AtomicBoolean(false);
+        Main.battleScene.addEventHandler(ItemChoiceEvent.ITEM_CHOICE, event -> {
+
+            itemUsed.set(true);
+
+        });
+
+        while(playerChoice==null && !itemUsed.get()) {
             playerChoice = this.choixCapacite();
+            //System.out.println(itemUsed.get());
         }
 
         monsterChoice=monster.getCapacite()[((new Random()).nextInt(4))];
 
         if(this.poke.getVitesse()>monster.getVitesse()) {
-            System.out.println(this.poke.getNom() + " utilise " + playerChoice.getNom());
-            this.poke.attack(monster, playerChoice);
-            if(monster.getPv()>0){
-                Main.battleDialog.setVisible(true);
-                Main.battleLabel.setVisible(true);
-                Platform.runLater(() -> {
-                    labelProperty.set(this.poke.getNom() + " utilise " + playerChoice.getNom());
-                });
+                if(playerChoice!=null) {
+                    this.poke.attack(monster, playerChoice);
+                }
+                if(monster.getPv()>0){
+                    Main.battleDialog.setVisible(true);
+                    Main.battleLabel.setVisible(true);
+                    Platform.runLater(() -> {
+                        if(playerChoice!=null) {
+                        labelProperty.set(this.poke.getNom() + " utilise " + playerChoice.getNom());
+                    }
+                    else{
+                        labelProperty.set("Vous avez utilisé un objet");
+                    }
+                    });
 
                 Main.b_attack1.setVisible(false);
                 Main.b_attack2.setVisible(false);
@@ -234,12 +251,17 @@ public class Player {
                 pvAdversaireProperty.set(((double)monster.getPv()/monster.getMaxPv())*163);
                 myPvProperty.set(((double)this.getPoke().getPv()/this.getPoke().getMaxPv())*163);
 
-                System.out.println(this.poke.getNom()+" utilise "+playerChoice.getNom());
-                this.poke.attack(monster,playerChoice);
+                if(playerChoice!=null){
+                    this.poke.attack(monster,playerChoice);}
                 Main.battleDialog.setVisible(true);
                 Main.battleLabel.setVisible(true);
                 Platform.runLater(() -> {
-                    labelProperty.set(this.poke.getNom() + " utilise " + playerChoice.getNom());
+                    if(playerChoice!=null) {
+                        labelProperty.set(this.poke.getNom() + " utilise " + playerChoice.getNom());
+                    }
+                    else{
+                        labelProperty.set("Vous avez utilisé un objet");
+                    }
                 });
                 synchronized (battleThread){
                     battleThread.wait(3000);
@@ -285,17 +307,44 @@ public class Player {
         if(this.poke.getPv()==0){
             System.out.println("Vous avez perdu");
             Main.pvBarre.setVisible(false);
+
+
+                Main.battleDialog.setVisible(true);
+                Main.battleLabel.setVisible(true);
+                Platform.runLater(() -> {
+                    labelProperty.set("Vous avez perdu, GameOver");
+                }
+                );
+                synchronized (battleThread){
+                    battleThread.wait(3000);
+                }
+
+
+
         }
         else{
             System.out.println("Bravo vous avez gagné !");
             this.getPoke().setXp(this.getPoke().getXp()+(monster.getNiveau()*10));
             Main.pvBarre2.setVisible(false);
+            Main.battleDialog.setVisible(true);
+            Main.battleLabel.setVisible(true);
+            Platform.runLater(() -> {
+                labelProperty.set("Vous avez gagné !");
+            });
+            synchronized (battleThread){
+                battleThread.wait(3000);
+            }
 
 
 
         }
 
         battleThread.interrupt();
+        if(m.getNom()=="Amogus" || getPoke().getPv()==0) {
+
+            getCorps().fireEvent(new GameOverEvent(false));
+
+        }
 
 
 
@@ -403,8 +452,6 @@ public class Player {
         this.getCorps().setTranslateY(this.getCorps().getTranslateY() - dy);
         mapPane.setTranslateX(mapPane.getTranslateX() + dx);
         mapPane.setTranslateY(mapPane.getTranslateY() + dy);
-        //System.out.println("Position this"+this.getCorps().getTranslateX()+" "+this.getCorps().getTranslateY());
-        //System.out.println("Position this bounds"+this.getCorps().getBoundsInParent().getCenterX()+" "+this.getCorps().getBoundsInParent().getCenterY());
 
 
         for(int i =0;i<world.getChildren().size();i++){
@@ -452,47 +499,64 @@ public class Player {
                         System.out.println("Battle start !");
                         switch(world.tilesFilePath) {
                             case "csv/world1.csv":
-                                switch(new Random().nextInt(12)){
-                                    case 0:
-                                        m = new Monster(new ImageView("img/pokemon/chenipan.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "Chenipan");
-                                        break;
-                                    case 1:
-                                        m= new Monster(new ImageView("img/pokemon/rattata.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "Rattata");
-                                        break;
-                                    case 2:
-                                        m= new Monster(new ImageView("img/pokemon/roucool.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "Roucool");
-                                        break;
-                                    case 3:
-                                        m= new Monster(new ImageView("img/pokemon/teddiursa.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "Teddiursa");
-                                        break;
-                                    case 4:
-                                        m= new Monster(new ImageView("img/pokemon/simularbre.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "Simularbre");
-                                    case 5:
-                                        m= new Monster(new ImageView("img/pokemon/wattouat.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "Wattouat");
-                                        break;
-                                    case 6:
-                                        m= new Monster(new ImageView("img/pokemon/hoothoot.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "Hoothoot");
-                                        break;
-                                    case 7:
-                                        m= new Monster(new ImageView("img/pokemon/vigoroth.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "Vigoroth");
-                                        break;
-                                    case 8:
-                                        m= new Monster(new ImageView("img/pokemon/charmillon.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "Charmillon");
-                                        break;
-                                    case 9:
-                                        m= new Monster(new ImageView("img/pokemon/zigzaton.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "Zigzaton");
-                                        break;
-                                    case 10:
-                                        m= new Monster(new ImageView("img/pokemon/bobléponge.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "bob");
-                                        break;
-                                    case 11:
-                                        m= new Monster(new ImageView("img/pokemon/multiplat.png"),1, 10 , 1,1,( new Random().nextInt(20)+40), 0, monsterCapacities, "Fiat multiplat");
-                                        break;
+                                if(getPoke().getNiveau()!=999) {
+                                    switch (new Random().nextInt(13)) {
+
+                                        case 0:
+                                            m = new Monster(new ImageView("img/pokemon/chenipan.png"), 1, 10, 1, 1, (new Random().nextInt(20) + 40), 0, monsterCapacities, "Chenipan");
+                                            break;
+                                        case 1:
+                                            m = new Monster(new ImageView("img/pokemon/rattata.png"), 1, 10, 1, 1, (new Random().nextInt(20) + 40), 0, monsterCapacities, "Rattata");
+                                            break;
+                                        case 2:
+                                            m = new Monster(new ImageView("img/pokemon/roucool.png"), 1, 10, 1, 1, (new Random().nextInt(20) + 40), 0, monsterCapacities, "Roucool");
+                                            break;
+                                        case 3:
+                                            m = new Monster(new ImageView("img/pokemon/teddiursa.png"), 1, 10, 1, 1, (new Random().nextInt(20) + 40), 0, monsterCapacities, "Teddiursa");
+                                            break;
+                                        case 4:
+                                            m = new Monster(new ImageView("img/pokemon/simularbre.png"), 1, 10, 1, 1, (new Random().nextInt(20) + 40), 0, monsterCapacities, "Simularbre");
+                                        case 5:
+                                            m = new Monster(new ImageView("img/pokemon/wattouat.png"), 1, 10, 1, 1, (new Random().nextInt(20) + 40), 0, monsterCapacities, "Wattouat");
+                                            break;
+                                        case 6:
+                                            m = new Monster(new ImageView("img/pokemon/hoothoot.png"), 1, 10, 1, 1, (new Random().nextInt(20) + 40), 0, monsterCapacities, "Hoothoot");
+                                            break;
+                                        case 7:
+                                            m = new Monster(new ImageView("img/pokemon/vigoroth.png"), 1, 10, 1, 1, (new Random().nextInt(20) + 40), 0, monsterCapacities, "Vigoroth");
+                                            break;
+                                        case 8:
+                                            m = new Monster(new ImageView("img/pokemon/charmillon.png"), 1, 10, 1, 1, (new Random().nextInt(20) + 40), 0, monsterCapacities, "Charmillon");
+                                            break;
+                                        case 9:
+                                            m = new Monster(new ImageView("img/pokemon/zigzaton.png"), 1, 10, 1, 1, (new Random().nextInt(20) + 40), 0, monsterCapacities, "Zigzaton");
+                                            break;
+                                        case 10:
+                                            m = new Monster(new ImageView("img/pokemon/bobléponge.png"), 1, 10, 1, 1, (new Random().nextInt(20) + 40), 0, monsterCapacities, "bob");
+                                            break;
+                                        case 11:
+                                            m = new Monster(new ImageView("img/pokemon/multiplat.png"), 1, 10, 1, 1, (new Random().nextInt(20) + 40), 0, monsterCapacities, "Fiat multiplat");
+                                            break;
+                                        //case 12:
+                                        //m= new Monster(new ImageView("img/pokemon/amogus.png"),1, 10 , 1,1,999, 0, monsterCapacities, "Amogus");
+                                        //break;
+
+                                        case 12:
+                                            m = new Monster(new ImageView("img/items/enfant.png"), 1, 10, 1, 1, 600, 0, monsterCapacities, "Enfant ?");
+                                            break;
+
+
+                                    }
                                 }
+                                else{
+                                    m= new Monster(new ImageView("img/pokemon/amogus.png"),1, 10 , 1,1,999, 0, monsterCapacities, "Amogus");
+                                    }
+
 
                                 break;
 
                         }
+
                         myPvProperty.set((double)this.getPoke().getPv()/this.getPoke().getMaxPv()*163);
                         pvAdversaireProperty.set((double)m.getPv()/m.getMaxPv()*163);
                         myLevelProperty.set(this.getPoke().getNiveau()+"");
@@ -540,25 +604,109 @@ public class Player {
 
                 }
                 else if(Objects.equals(world.getCollisionTab()[GridPane.getRowIndex(world.getChildren().get(i))][GridPane.getColumnIndex(world.getChildren().get(i))], "d")){
-                    this.setBougeable(false);
                     this.getCorps().setTranslateX(previousX1);
                     this.getCorps().setTranslateY(previousY1);
                     mapPane.setTranslateX(previousX2);
                     mapPane.setTranslateY(previousY2);
-                    ImageView dialog = new ImageView("img/zone_texte.png");
-                    Main.mapPane.getChildren().add(dialog);
-                    dialog.setFitWidth(800);
-                    dialog.setFitHeight(150);
-                    dialog.setLayoutX(0);
-                    dialog.setLayoutY(440);
-                    dialog.setTranslateX(previousX1);
-                    dialog.setTranslateY(previousY1);
-                    Label label = new Label(Main.dealer.getName()+":\n"+Main.dealer.getDialogue()[0]);
-                    label.setTranslateX(previousX1);
-                    label.setTranslateY(previousY1);
-                    label.setLayoutX(30);
-                    label.setLayoutY(470);
-                    label.setStyle("-fx-font-weight: bold;-fx-font-size: 20");
+                    if(!Main.dealer.isInDialog()) {
+
+                        Main.dealer.setInDialog(true);
+
+                        this.setBougeable(false);
+                        ImageView dialog = new ImageView("img/zone_texte.png");
+                        Main.mapPane.getChildren().add(dialog);
+                        dialog.setFitWidth(800);
+                        dialog.setFitHeight(150);
+                        dialog.setLayoutX(0);
+                        dialog.setLayoutY(440);
+                        dialog.setTranslateX(previousX1);
+                        dialog.setTranslateY(previousY1);
+
+
+                        Label label = new Label(Main.dealer.getName() + ":\n" + Main.dealer.getDialogue()[0] );
+                        label.setTranslateX(previousX1);
+                        label.setTranslateY(previousY1);
+                        label.setLayoutX(30);
+                        label.setLayoutY(470);
+                        label.setStyle("-fx-font-weight: bold;-fx-font-size: 20");
+                        Main.mapPane.getChildren().add(label);
+                        dialog.setOnMouseClicked(e -> {
+                            a++;
+                            if(Main.dealer.getHaveResponse()[a]==1){
+                                label.setText(Main.dealer.getName() + ":\n" + Main.dealer.getDialogue()[1]);
+                                Button b_oui = new Button(Main.dealer.getResponse()[0]);
+                                Button b_non = new Button(Main.dealer.getResponse()[1]);
+
+                                Main.mapPane.getChildren().add(b_oui);
+                                Main.mapPane.getChildren().add(b_non);
+                                b_oui.setLayoutX(600);
+                                b_oui.setLayoutY(300);
+                                b_non.setLayoutX(600);
+                                b_non.setLayoutY(380);
+
+                                b_oui.setTranslateX(previousX1);
+                                b_oui.setTranslateY(previousY1);
+                                b_non.setTranslateX(previousX1);
+                                b_non.setTranslateY(previousY1);
+
+
+                                b_oui.getStylesheets().add("css/fuite.css");
+                                b_non.getStylesheets().add("css/attack.css");
+
+                                b_oui.setOnMouseClicked(event -> {
+                                    //Main.mapPane.getChildren().remove(dialog);
+                                    //Main.mapPane.getChildren().remove(label);
+                                    Main.mapPane.getChildren().remove(b_oui);
+                                    Main.mapPane.getChildren().remove(b_non);
+                                    //setBougeable(true);
+                                    //a = 0;
+                                    //Main.dealer.setInDialog(false);
+                                    boolean found=false;
+                                    for(int v=0; v<getInventaire().length;v++){
+                                        if(getInventaire()[v].getItemName()=="Cocaïne"){
+                                            getInventaire()[v].setQuantity(getInventaire()[v].getQuantity()+1);
+                                            found=true;
+                                        }
+                                    }
+                                    if(!found){
+                                        getInventaire()[getInventaire().length-1]=new Item("Cocaïne","Met votre pokémon lv 999",Effet.COCAINED,1,new ImageView("img/items/cocaine.png"));
+
+                                    }
+                                    label.setText("Vous avez reçu de la cocaïne");
+                                    dialog.setOnMouseClicked( event2 ->{
+                                        Main.mapPane.getChildren().remove(dialog);
+                                        Main.mapPane.getChildren().remove(label);
+                                        setBougeable(true);
+                                        a = 0;
+                                        Main.dealer.setInDialog(false);
+                                    });
+
+                                });
+                                b_non.setOnMouseClicked(event -> {
+                                    Main.mapPane.getChildren().remove(dialog);
+                                    Main.mapPane.getChildren().remove(label);
+                                    Main.mapPane.getChildren().remove(b_oui);
+                                    Main.mapPane.getChildren().remove(b_non);
+                                    setBougeable(true);
+                                    a = 0;
+                                    Main.dealer.setInDialog(false);
+                                }
+                                );
+
+                            }
+                            else if (a >= Main.dealer.getDialogue().length) {
+                                Main.mapPane.getChildren().remove(dialog);
+                                Main.mapPane.getChildren().remove(label);
+                                setBougeable(true);
+                                a = 0;
+                                Main.dealer.setInDialog(false);
+                            } else {
+                                label.setText(Main.dealer.getName() + ":\n" + Main.dealer.getDialogue()[a]);
+                            }
+
+
+                        });
+                    }
                 }
 
 
@@ -568,6 +716,7 @@ public class Player {
                     this.getCorps().setTranslateY(previousY1);
                     mapPane.setTranslateX(previousX2);
                     mapPane.setTranslateY(previousY2);
+
 
                 }
 

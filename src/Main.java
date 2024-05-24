@@ -2,6 +2,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
@@ -70,7 +71,10 @@ public class Main extends Application{
     public static ImageView battleDialog;
     public static Label battleLabel;
 
+    public static NPC[] lstNPC;
     public static NPC dealer;
+    public static NPC monstre1;
+    public static NPC monstre2;
 
 
     public static void main(String[] args){
@@ -397,18 +401,41 @@ public class Main extends Application{
         Item[] items= new Item[]{new Item("Potion","normalement ça soigne ton pokémon",Effet.PVPLUS,1,new ImageView("img/items/potion.png")),
                 new Item("Bombe Nucléaire","Détruit le monde et arrête le jeu",Effet.PVPLUS,1,new ImageView("img/items/nuclearBomba.png")),
                 new Item("J'ai envie de passer en ing2 svp...","Vous rend plus riche que Jeff Bezos",Effet.PVPLUS,1,new ImageView("img/items/GéEnviDePasserEnIng2svp.png")),
-                new Item("Cocaïne","Met votre pokémon lv 999",Effet.COCAINED,5,new ImageView("img/items/cocaine.png")),
+                new Item("Cocaïne","Met votre pokémon lv 999",Effet.COCAINED,1,new ImageView("img/items/cocaine.png")),
                 new Item("Viagra","Rend votre pokémon bien plus performant",Effet.PVPLUS,1,new ImageView("img/items/viagra.png")),
                 new Item("Corde","Au cas où après les partiels...",Effet.PVPLUS,1,new ImageView("img/items/corde.png")),
+                new Item("Enfant","Chef ???",Effet.PVPLUS,6,new ImageView("img/items/enfant.png")),
+                new Item("4 Mois de deezer premium","5993-9661-1742-2700",Effet.NULL,1,new ImageView("img/items/deezer.png")),
+                new Item("Mastercard ****2355","5993 1265 7896 2355 03/26 533",Effet.NULL,1,new ImageView("img/items/mastercard.png")),
+                new Item("Bastos","Mort douloureuse et atroce au 1er pokémon qui vient",Effet.BASTOS,1,new ImageView("img/items/bastos.png")),
                 new Item("Lunettes de soleil","Annule l'effet de la cocaïne",Effet.UNCOCAINED,1,new ImageView("img/items/lunettesSoleil.png")),};
 
 
         player=new Player(900, "Bryan",items,new Monster(new ImageView("img/pokemon/passajotablo.png"),new ImageView("img/pokemon/passajotablo2.png"),1,10,1,1,50,0,new Capacite[]{},"Passajotablo"));
 
 
-        dealer = new NPC("Dealer",new String[]{"Hey, tu veux de la drogue ?","J'ai de la bonne cocaïne pour toi !"},new ImageView("img/npc/dealer.png"),Effet.DEALER,items,new int[]{1,0},false,new String[]{"Oui","Non"});
-        dealer.getSprite().setFitWidth(50);
-        dealer.getSprite().setFitHeight(50);
+
+        dealer = new NPC("Le Dit l'heure",new String[]{"...","tu en veux ?","Merci de ton achat !"},false,new ImageView("img/npc/dealer.png"),Effet.DEALER,items,new int[]{0,1,0},false,new String[]{"Oui","Non"});
+        dealer.getSprite().setFitWidth(70);
+        dealer.getSprite().setFitHeight(70);
+
+        monstre1 = new NPC ("rattata", new String[]{},true,new ImageView("img/pokemon/rattata.png"), Effet.TRAINER, items, new int[]{0,1,0}, true,new String[]{});
+        monstre1.getSprite().setFitWidth(100);
+        monstre1.getSprite().setFitHeight(100);
+        monstre1.getSprite().setTranslateX(1000);
+        monstre1.getSprite().setTranslateY(400);
+
+        mapPane.getChildren().add(monstre1.getSprite());
+
+        monstre2 = new NPC ("amogus", new String[]{},true,new ImageView("img/pokemon/amogus.png"), Effet.TRAINER, items, new int[]{0,1,0}, true,new String[]{});
+        monstre2.getSprite().setFitWidth(70);
+        monstre2.getSprite().setFitHeight(70);
+        monstre2.getSprite().setTranslateX(1500);
+        monstre2.getSprite().setLayoutY(300);
+
+        lstNPC = new NPC[]{dealer,monstre1,monstre2};
+
+        mapPane.getChildren().add(monstre2.getSprite());
 
         scene = new Scene(mapPane, worldWidth, worldHeight);
         window.setWidth(W_WIDTH);
@@ -436,7 +463,7 @@ public class Main extends Application{
         dealer.getSprite().setLayoutX(500);
         dealer.getSprite().setLayoutY(500);
         dealer.getSprite().setTranslateX(1550);
-        dealer.getSprite().setTranslateY(-330);
+        dealer.getSprite().setTranslateY(-350);
 
 
         player.getCorps().setLayoutX(characterX);
@@ -451,6 +478,17 @@ public class Main extends Application{
 
 
         scene.setFill(Color.BLACK);
+
+        scene.addEventHandler(GameOverEvent.GAME_OVER, new EventHandler<GameOverEvent>() {
+            @Override
+            public void handle(GameOverEvent gameOverEvent) {
+                System.out.println("Game Over");
+                Platform.runLater(() -> {
+                    window.close();
+                });
+
+            }
+        });
 
         scene.addEventHandler(BattleEvent.BATTLE, new EventHandler<BattleEvent>() {
             @Override
@@ -544,9 +582,7 @@ public class Main extends Application{
         window.show();
 
 
-
     }
-
 
 
 
