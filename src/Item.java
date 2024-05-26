@@ -20,7 +20,7 @@ public class Item {
         this.itemImage.setFitHeight(50);
     }
 
-
+    //methode qui permet d'utiliser un item et appliquer un effet , potentiel : infini
     public void useItem(Monster m) {
 
         if(BagTransition.k==0){

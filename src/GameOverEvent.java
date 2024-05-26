@@ -1,6 +1,6 @@
 import javafx.event.Event;
 import javafx.event.EventType;
-
+//Event for when the player chooses to attack
 public class GameOverEvent extends Event {
     public static final EventType<GameOverEvent> GAME_OVER = new EventType<>(Event.ANY, "GAME_OVER");
 

@@ -81,7 +81,7 @@ public class Main extends Application{
         launch(args);
     }
 
-
+//installe la scène de combat
     public void setBattleArea(){
         if(e<=1){
             e+=0.1;
@@ -96,7 +96,7 @@ public class Main extends Application{
 
         }
     }
-
+//installe la scène de transition
     public void updateSpriteNothing(Stage window){
         if(sensTransition==0) {
             if (i < world.getChildren().size()) {
@@ -131,7 +131,7 @@ public class Main extends Application{
         }
 
     }
-
+//effectue la transition entre la scène de jeu et la scène de combat
     public void transitionScene(Stage window,Monster m){
         System.out.println("Transition");
 
@@ -389,6 +389,7 @@ public class Main extends Application{
 
     }
 
+    //installe la scène de jeu
 
     @Override
     public void start(Stage window) throws Exception{
@@ -510,6 +511,7 @@ public class Main extends Application{
         });
 
 
+        //permet de déplacer le joueur
 
         scene.setOnKeyPressed(event -> {
             if (Objects.requireNonNull(event.getCode()) == S){

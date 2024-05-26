@@ -1,5 +1,6 @@
 import java.lang.reflect.Array;
 
+
 public class Capacite {
 
     private String nom;

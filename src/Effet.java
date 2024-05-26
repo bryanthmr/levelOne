@@ -1,5 +1,5 @@
 public enum Effet {
-    VITESSEMOINS,
+    VITESSEMOINS, //codage de jour
     DEFENSEMOINS,
     ATTAQUEMOINS,
     VITESSEPLUS,
@@ -8,7 +8,7 @@ public enum Effet {
     PVPLUS,
     SUPERPVPLUS,
     XPPLUS,
-    COCAINED,
+    COCAINED, //codage de nuit
     UNCOCAINED,
     DEALER,
     BASTOS,

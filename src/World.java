@@ -30,7 +30,7 @@ public class World extends GridPane {
         this.setVgap(0);
 
     }
-
+//génère la map et les collisions en fonction des fichiers csv
     private void genMap(){
         ImageView tile;
         Image image;

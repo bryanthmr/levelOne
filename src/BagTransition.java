@@ -48,7 +48,7 @@ public class BagTransition {
     private static Label lvPokemon;
 
 
-
+    //genere le gridpane du sac
     public static void genGridPane() {
         int n = 0;
         int l = 0;
@@ -86,7 +86,7 @@ public class BagTransition {
 
 
 
-
+//installe la scene de sac
     public static void setBagArea(){
         if(e<=1){
             e+=0.1;
@@ -102,7 +102,7 @@ public class BagTransition {
 
         }
     }
-
+//Fonction qui permet de mettre a jour le sprite du joueur et la scene pour une bonne transition
     public static void updateSpriteNothing(Stage window){
         if(sensTransition==0) {
                 Main.player.getCorps().setOpacity(0);
@@ -127,7 +127,7 @@ public class BagTransition {
         }
 
     }
-
+//Fonction qui permet de faire la transition entre la scene de jeu et la scene de sac
     public static void transitionScene(Stage window,int k) {
         System.out.println("Transition");
         BagTransition.k=k;

@@ -46,7 +46,7 @@ public class Monster {
         this.realLv=niveau;
     }
 
-
+//fonction pour attaquer un monstre selon une capacité
     public void attack(Monster m,Capacite c){
 
         switch(c.getEffet()){

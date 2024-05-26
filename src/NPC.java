@@ -2,6 +2,9 @@ import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 
+//classe NPC mais en vrai ça peut tout faire
+
+
 public class NPC {
 
     private String name;

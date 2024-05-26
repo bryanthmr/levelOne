@@ -1,7 +1,7 @@
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.ImageView;
 
-
+//classe qui devait faire beaucoup de choses mais j'ai opté pour une mauvaise architecture
 public class GraphicObject extends ImageView {
 
 

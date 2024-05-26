@@ -449,7 +449,7 @@ public class Player {
 
 
 
-
+//permet le déplacement du monde , du joueur et aussi de démarrer les combats
     public void moveWorld(double dx, double dy) {
 
 
