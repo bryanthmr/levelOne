@@ -15,6 +15,8 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -26,7 +28,7 @@ public class Player {
     private String nom;
     //private Tenue tenue;
     public Thread battleThread;
-    private Item[] inventaire;
+    private ArrayList<Item> inventaire;
 
     private static int compteurTour=0;
     private Monster poke;
@@ -72,7 +74,7 @@ public class Player {
     private Rectangle2D colliderBox;
 
 
-    public Player(int pv, String nom, Item[] inventaire, Monster poke){
+    public Player(int pv, String nom, ArrayList<Item> inventaire, Monster poke){
 
 
         this.world=((World)mapPane.getChildren().get(0));
@@ -221,7 +223,7 @@ public class Player {
                 Main.battleLabel.setVisible(false);
                 Main.b_attack.setVisible(true);
                 Main.b_bag.setVisible(true);
-                Main.b_fuite.setVisible(true);
+                //Main.b_fuite.setVisible(true);
 
                 pvAdversaireProperty.set(((double)monster.getPv()/monster.getMaxPv())*163);
                 myPvProperty.set(((double)this.getPoke().getPv()/this.getPoke().getMaxPv())*163);
@@ -270,7 +272,7 @@ public class Player {
                 Main.battleLabel.setVisible(false);
                 Main.b_attack.setVisible(true);
                 Main.b_bag.setVisible(true);
-                Main.b_fuite.setVisible(true);
+                //Main.b_fuite.setVisible(true);
                 pvAdversaireProperty.set(((double)monster.getPv()/monster.getMaxPv())*163);
                 myPvProperty.set(((double)this.getPoke().getPv()/this.getPoke().getMaxPv())*163);
 
@@ -282,18 +284,19 @@ public class Player {
     }
 
     public void startBattle(Monster monster) throws InterruptedException {
+        /*
         synchronized (battleThread){
             Main.battleScene.addEventHandler(FuiteEvent.FUITE, new EventHandler<FuiteEvent>() {
                 @Override
                 public void handle(FuiteEvent e) {
 
-                    battleThread.interrupt();
+                    m.setPv(0);
 
 
                 }
             });
         }
-
+*/
         if(battleThread.isInterrupted()){
             return;
         }
@@ -338,13 +341,16 @@ public class Player {
 
 
         }
-
-        battleThread.interrupt();
         if(m.getNom()=="Amogus" || getPoke().getPv()==0) {
 
             getCorps().fireEvent(new GameOverEvent(false));
 
         }
+
+        battleThread.interrupt();
+
+
+
 
 
 
@@ -488,9 +494,9 @@ public class Player {
 
 
                         Capacite[] playerCapacities = new Capacite[4];
-                        playerCapacities[0] = new Capacite("lance-flamme", 100, Effet.NULL, limit, Type.FEU);
+                        playerCapacities[0] = new Capacite("Ball-ombre", 100, Effet.NULL, limit, Type.FEU);
                         playerCapacities[1] = new Capacite("Hurlement", 0, Effet.DEFENSEMOINS, limit, Type.NORMAL);
-                        playerCapacities[2] = new Capacite("Vive attaque", 50, Effet.NULL, limit, Type.NORMAL);
+                        playerCapacities[2] = new Capacite("Griffe Ombre", 50, Effet.NULL, limit, Type.NORMAL);
                         playerCapacities[3] = new Capacite("charge", 70, Effet.NULL, limit, Type.NORMAL);
 
                         this.getPoke().setCapacite(playerCapacities);
@@ -537,9 +543,6 @@ public class Player {
                                         case 11:
                                             m = new Monster(new ImageView("img/pokemon/multiplat.png"), 1, 10, 1, 1, (new Random().nextInt(20) + 40), 0, monsterCapacities, "Fiat multiplat");
                                             break;
-                                        //case 12:
-                                        //m= new Monster(new ImageView("img/pokemon/amogus.png"),1, 10 , 1,1,999, 0, monsterCapacities, "Amogus");
-                                        //break;
 
                                         case 12:
                                             m = new Monster(new ImageView("img/items/enfant.png"), 1, 10, 1, 1, 600, 0, monsterCapacities, "Enfant ?");
@@ -549,6 +552,10 @@ public class Player {
                                     }
                                 }
                                 else{
+                                    monsterCapacities[0] = new Capacite("SUS", 20, Effet.NULL, limit, Type.FEU);
+                                    monsterCapacities[1] = new Capacite("WHAT IMPOSTER IS SUS ?", 0, Effet.DEFENSEMOINS, limit, Type.NORMAL);
+                                    monsterCapacities[2] = new Capacite("tasks done", 20, Effet.NULL, limit, Type.NORMAL);
+                                    monsterCapacities[3] = new Capacite("emergency alert", 10, Effet.NULL, limit, Type.NORMAL);
                                     m= new Monster(new ImageView("img/pokemon/amogus.png"),1, 10 , 1,1,999, 0, monsterCapacities, "Amogus");
                                     }
 
@@ -662,14 +669,14 @@ public class Player {
                                     //a = 0;
                                     //Main.dealer.setInDialog(false);
                                     boolean found=false;
-                                    for(int v=0; v<getInventaire().length;v++){
-                                        if(getInventaire()[v].getItemName()=="Cocaïne"){
-                                            getInventaire()[v].setQuantity(getInventaire()[v].getQuantity()+1);
+                                    for(int v=0; v<getInventaire().size();v++){
+                                        if(getInventaire().get(v).getItemName()=="Cocaïne"){
+                                            getInventaire().get(v).setQuantity(getInventaire().get(v).getQuantity()+1);
                                             found=true;
                                         }
                                     }
                                     if(!found){
-                                        getInventaire()[getInventaire().length-1]=new Item("Cocaïne","Met votre pokémon lv 999",Effet.COCAINED,1,new ImageView("img/items/cocaine.png"));
+                                        getInventaire().add(new Item("Cocaïne","Met votre pokémon lv 999",Effet.COCAINED,1,new ImageView("img/items/cocaine.png")));
 
                                     }
                                     label.setText("Vous avez reçu de la cocaïne");
@@ -764,11 +771,11 @@ public class Player {
         this.poke = poke;
     }
 
-    public Item[] getInventaire() {
+    public ArrayList<Item> getInventaire() {
         return inventaire;
     }
 
-    public void setInventaire(Item[] inventaire) {
+    public void setInventaire(ArrayList<Item> inventaire) {
         this.inventaire = inventaire;
     }
 

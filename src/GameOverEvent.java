@@ -4,17 +4,17 @@ import javafx.event.EventType;
 public class GameOverEvent extends Event {
     public static final EventType<GameOverEvent> GAME_OVER = new EventType<>(Event.ANY, "GAME_OVER");
 
-    public boolean isVictory() {
-        return victory;
+    public boolean isFinitoPipo() {
+        return finitoPipo;
     }
 
-    public void setVictory(boolean victory) {
-        this.victory = victory;
+    public void setFinitoPipo(boolean finitoPipo) {
+        this.finitoPipo = finitoPipo;
     }
 
-    private boolean victory;
-    public GameOverEvent(boolean victory) {
+    private boolean finitoPipo;
+    public GameOverEvent(boolean finitoPipo) {
         super(GAME_OVER);
-        this.victory = victory;
+        this.finitoPipo = finitoPipo;
     }
 }

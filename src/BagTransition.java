@@ -52,8 +52,8 @@ public class BagTransition {
     public static void genGridPane() {
         int n = 0;
         int l = 0;
-        for (int m = 0; m < Main.player.getInventaire().length; m++) {
-            if (Main.player.getInventaire()[m].getQuantity() > 0) {
+        for (int m = 0; m < Main.player.getInventaire().size(); m++) {
+            if (Main.player.getInventaire().get(m).getQuantity() > 0) {
 
 
                 if (m % 8 == 0) {
@@ -62,17 +62,17 @@ public class BagTransition {
                 }
 
 
-                bagGrid.add(Main.player.getInventaire()[m].getItemImage(), n, l);
-                Main.player.getInventaire()[m].getItemImage().setOnMouseClicked((e) -> {
+                bagGrid.add(Main.player.getInventaire().get(m).getItemImage(), n, l);
+                Main.player.getInventaire().get(m).getItemImage().setOnMouseClicked((e) -> {
 
                     itemPlusGrand.setImage(((ImageView) e.getTarget()).getImage());
 
-                    for (int j = 0; j < Main.player.getInventaire().length; j++) {
-                        if (Main.player.getInventaire()[j].getItemImage().equals((e.getTarget()))) {
+                    for (int j = 0; j < Main.player.getInventaire().size(); j++) {
+                        if (Main.player.getInventaire().get(j).getItemImage().equals((e.getTarget()))) {
 
-                            itemDescription.setText(Main.player.getInventaire()[j].getItemDescription());
-                            itemQuantity.setText("Quantité : " + Main.player.getInventaire()[j].getQuantity());
-                            itemName.setText(Main.player.getInventaire()[j].getItemName());
+                            itemDescription.setText(Main.player.getInventaire().get(j).getItemDescription());
+                            itemQuantity.setText("Quantité : " + Main.player.getInventaire().get(j).getQuantity());
+                            itemName.setText(Main.player.getInventaire().get(j).getItemName());
                         }
                     }
 
@@ -210,13 +210,13 @@ public class BagTransition {
         b_use.getStylesheets().add("css/fuite.css");
         b_use.setVisible(true);
         b_use.setOnMouseClicked(e -> {
-            for (int u = 0; u < Main.player.getInventaire().length; u++) {
+            for (int u = 0; u < Main.player.getInventaire().size(); u++) {
 
-                if (Main.player.getInventaire()[u].getItemImage().getImage()== itemPlusGrand.getImage()) {
-                    Main.player.getInventaire()[u].useItem(Main.player.getPoke());
-                    itemQuantity.setText("Quantité : " + Main.player.getInventaire()[u].getQuantity());
-                    if (Main.player.getInventaire()[u].getQuantity() == 0) {
-                        bagGrid.getChildren().remove(Main.player.getInventaire()[u].getItemImage());
+                if (Main.player.getInventaire().get(u).getItemImage().getImage()== itemPlusGrand.getImage()) {
+                    Main.player.getInventaire().get(u).useItem(Main.player.getPoke());
+                    itemQuantity.setText("Quantité : " + Main.player.getInventaire().get(u).getQuantity());
+                    if (Main.player.getInventaire().get(u).getQuantity() == 0) {
+                        bagGrid.getChildren().remove(Main.player.getInventaire().get(u).getItemImage());
 
                         itemDescription.setText("");
                         itemQuantity.setText("");

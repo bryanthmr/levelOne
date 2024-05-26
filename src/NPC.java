@@ -1,12 +1,14 @@
 import javafx.scene.image.ImageView;
 
+import java.util.ArrayList;
+
 public class NPC {
 
     private String name;
     private String[] dialogue;
     private ImageView sprite;
     private Effet effet;
-    private Item[] Inventaire;
+    private ArrayList<Item> Inventaire;
     private boolean isTrainer;
     private int[] haveResponse;
     private String[] response;
@@ -39,7 +41,7 @@ public class NPC {
 
     private boolean inDialog;
 
-    public NPC(String name, String[] dialogue,boolean isMonster, ImageView sprite, Effet effet, Item[] inventaire, int[] haveResponse, boolean isTrainer, String[] response) {
+    public NPC(String name, String[] dialogue, boolean isMonster, ImageView sprite, Effet effet, ArrayList<Item> inventaire, int[] haveResponse, boolean isTrainer, String[] response) {
         this.name = name;
         this.dialogue = dialogue;
         this.sprite = sprite;
@@ -93,11 +95,11 @@ public class NPC {
         this.haveResponse = haveResponse;
     }
 
-    public Item[] getInventaire() {
+    public ArrayList<Item> getInventaire() {
         return Inventaire;
     }
 
-    public void setInventaire(Item[] inventaire) {
+    public void setInventaire(ArrayList<Item> inventaire) {
         Inventaire = inventaire;
     }
 

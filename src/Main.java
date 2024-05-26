@@ -252,7 +252,7 @@ public class Main extends Application{
         b_attack.setOnMouseClicked(event -> {
             b_attack.setVisible(false);
             b_bag.setVisible(false);
-            b_fuite.setVisible(false);
+            //b_fuite.setVisible(false);
             b_attack1.setVisible(true);
             b_attack2.setVisible(true);
             b_attack3.setVisible(true);
@@ -270,6 +270,7 @@ public class Main extends Application{
         });
         OverlayPane.getChildren().add(b_bag);
 
+        /*
         b_fuite = new Button("Fuite");
         b_fuite.setLayoutX(600);
         b_fuite.setLayoutY(520);
@@ -287,6 +288,7 @@ public class Main extends Application{
         });
         b_fuite.getStylesheets().add("css/fuite.css");
         OverlayPane.getChildren().add(b_fuite);
+        */
 
         b_attack1 = new Button(player.getPoke().getCapacite()[0].getNom());
         b_attack1.setLayoutX(600);
@@ -336,7 +338,7 @@ public class Main extends Application{
         b_retour.setOnMouseClicked(event -> {
             b_attack.setVisible(true);
             b_bag.setVisible(true);
-            b_fuite.setVisible(true);
+            //b_fuite.setVisible(true);
             b_attack1.setVisible(false);
             b_attack2.setVisible(false);
             b_attack3.setVisible(false);
@@ -398,24 +400,25 @@ public class Main extends Application{
 
         mapPane = new Pane(world);
         mapPane.setPrefSize(worldWidth, worldHeight);
-        Item[] items= new Item[]{new Item("Potion","normalement ça soigne ton pokémon",Effet.PVPLUS,1,new ImageView("img/items/potion.png")),
-                new Item("Bombe Nucléaire","Détruit le monde et arrête le jeu",Effet.PVPLUS,1,new ImageView("img/items/nuclearBomba.png")),
-                new Item("J'ai envie de passer en ing2 svp...","Vous rend plus riche que Jeff Bezos",Effet.PVPLUS,1,new ImageView("img/items/GéEnviDePasserEnIng2svp.png")),
-                new Item("Cocaïne","Met votre pokémon lv 999",Effet.COCAINED,1,new ImageView("img/items/cocaine.png")),
-                new Item("Viagra","Rend votre pokémon bien plus performant",Effet.PVPLUS,1,new ImageView("img/items/viagra.png")),
-                new Item("Corde","Au cas où après les partiels...",Effet.PVPLUS,1,new ImageView("img/items/corde.png")),
-                new Item("Enfant","Chef ???",Effet.PVPLUS,6,new ImageView("img/items/enfant.png")),
-                new Item("4 Mois de deezer premium","5993-9661-1742-2700",Effet.NULL,1,new ImageView("img/items/deezer.png")),
-                new Item("Mastercard ****2355","5993 1265 7896 2355 03/26 533",Effet.NULL,1,new ImageView("img/items/mastercard.png")),
-                new Item("Bastos","Mort douloureuse et atroce au 1er pokémon qui vient",Effet.BASTOS,1,new ImageView("img/items/bastos.png")),
-                new Item("Lunettes de soleil","Annule l'effet de la cocaïne",Effet.UNCOCAINED,1,new ImageView("img/items/lunettesSoleil.png")),};
+        ArrayList<Item> items= new ArrayList<Item>();
+        items.add(new Item("Potion","Même effet que l'enfant mais en plus éthique",Effet.PVPLUS,10,new ImageView("img/items/potion.png")));
+        items.add(new Item("Bombe Nucléaire","Détruit le monde et arrête le jeu",Effet.PVPLUS,1,new ImageView("img/items/nuclearBomba.png")));
+        items.add(new Item("J'ai envie de passer en ing2 svp...","Vous rend plus riche que Jeff Bezos (sauf que j'ai oublié de mettre l'argent dans le jeu)",Effet.PVPLUS,1,new ImageView("img/items/GéEnviDePasserEnIng2svp.png")));
+                //new Item("Cocaïne","Met votre pokémon lv 999",Effet.COCAINED,0,new ImageView("img/items/cocaine.png")),
+        items.add(new Item("Viagra","Rend votre pokémon bien plus performant",Effet.PVPLUS,1,new ImageView("img/items/viagra.png")));
+        items.add(new Item("Corde","Au cas où après les partiels...",Effet.PVPLUS,1,new ImageView("img/items/corde.png")));
+        items.add(new Item("Enfant","Chef ??? (Soigne votre pokémon)",Effet.PVPLUS,6,new ImageView("img/items/enfant.png")));
+        items.add(new Item("4 Mois de deezer premium","5993-9661-1742-2708",Effet.NULL,1,new ImageView("img/items/deezer.png")));
+        items.add(new Item("Mastercard ****2355","5993 1265 7896 2355 03/26 533",Effet.NULL,1,new ImageView("img/items/mastercard.png")));
+        items.add(new Item("Bastos","Mort douloureuse et atroce au 1er pokémon qui vient",Effet.BASTOS,1,new ImageView("img/items/bastos.png")));
+        items.add(new Item("Lunettes de soleil","Annule l'effet de la cocaïne",Effet.UNCOCAINED,1,new ImageView("img/items/lunettesSoleil.png")));
 
 
         player=new Player(900, "Bryan",items,new Monster(new ImageView("img/pokemon/passajotablo.png"),new ImageView("img/pokemon/passajotablo2.png"),1,10,1,1,50,0,new Capacite[]{},"Passajotablo"));
 
 
 
-        dealer = new NPC("Le Dit l'heure",new String[]{"...","tu en veux ?","Merci de ton achat !"},false,new ImageView("img/npc/dealer.png"),Effet.DEALER,items,new int[]{0,1,0},false,new String[]{"Oui","Non"});
+        dealer = new NPC("Le Dit l'heure",new String[]{"...","tu en veux ?"},false,new ImageView("img/npc/dealer.png"),Effet.DEALER,items,new int[]{0,1},false,new String[]{"Oui","Non"});
         dealer.getSprite().setFitWidth(70);
         dealer.getSprite().setFitHeight(70);
 
@@ -483,9 +486,7 @@ public class Main extends Application{
             @Override
             public void handle(GameOverEvent gameOverEvent) {
                 System.out.println("Game Over");
-                Platform.runLater(() -> {
-                    window.close();
-                });
+                Platform.runLater(window::close);
 
             }
         });
