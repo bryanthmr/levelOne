@@ -11,7 +11,8 @@ public class NPC {
     private String[] dialogue;
     private ImageView sprite;
     private Effet effet;
-    private ArrayList<Item> Inventaire;
+    private Item[] Inventaire;
+    public static int index=0;
     private boolean isTrainer;
     private int[] haveResponse;
     private String[] response;
@@ -44,7 +45,7 @@ public class NPC {
 
     private boolean inDialog;
 
-    public NPC(String name, String[] dialogue, boolean isMonster, ImageView sprite, Effet effet, ArrayList<Item> inventaire, int[] haveResponse, boolean isTrainer, String[] response) {
+    public NPC(String name, String[] dialogue, boolean isMonster, ImageView sprite, Effet effet, Item[] inventaire, int[] haveResponse, boolean isTrainer, String[] response) {
         this.name = name;
         this.dialogue = dialogue;
         this.sprite = sprite;
@@ -98,11 +99,11 @@ public class NPC {
         this.haveResponse = haveResponse;
     }
 
-    public ArrayList<Item> getInventaire() {
+    public Item[] getInventaire() {
         return Inventaire;
     }
 
-    public void setInventaire(ArrayList<Item> inventaire) {
+    public void setInventaire(Item[] inventaire) {
         Inventaire = inventaire;
     }
 

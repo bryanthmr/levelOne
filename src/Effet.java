@@ -13,5 +13,6 @@ public enum Effet {
     DEALER,
     BASTOS,
     TRAINER,
+    SEEInventory,
     NULL;
 }

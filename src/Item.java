@@ -1,20 +1,24 @@
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
+import java.util.Random;
 
 public class Item {
 
     private String itemName;
     private String itemDescription;
     private Effet effet;
-    private int quantity;
+    //private int quantity;
     private ImageView itemImage;
 
-    public Item(String itemName, String itemDescription, Effet effet, int quantity, ImageView itemImage) {
+
+    public Item(String itemName, String itemDescription, Effet effet, ImageView itemImage) {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.effet = effet;
-        this.quantity=quantity;
+        //this.quantity=quantity;
         this.itemImage=itemImage;
         this.itemImage.setFitWidth(50);
         this.itemImage.setFitHeight(50);
@@ -32,16 +36,17 @@ public class Item {
             case PVPLUS:
                 m.setPv(m.getPv()+(int)(m.getMaxPv()*0.3));
                 Main.player.myPvProperty.set((double)m.getPv()/m.getMaxPv()*163);
-                this.setQuantity(this.getQuantity()-1);
+                //this.setQuantity(this.getQuantity()-1);
+
                 break;
             case SUPERPVPLUS:
                 m.setPv(m.getMaxPv());
                 Main.player.myPvProperty.set((double)m.getPv()/m.getMaxPv()*163);
-                this.setQuantity(this.getQuantity()-1);
+                //this.setQuantity(this.getQuantity()-1);
                 break;
             case XPPLUS:
                 m.setXp((int)(m.getXp()*1.3));
-                this.setQuantity(this.getQuantity()-1);
+                //this.setQuantity(this.getQuantity()-1);
                 break;
             case COCAINED:
 
@@ -50,7 +55,8 @@ public class Item {
                 m.realLv=m.getNiveau();
                 m.setNiveau(999);
                 Main.player.myLevelProperty.set(""+999);
-                this.setQuantity(this.getQuantity()-1);
+                //this.setQuantity(this.getQuantity()-1);
+
 
                 break;
             case UNCOCAINED:
@@ -58,7 +64,7 @@ public class Item {
                 m.getSpriteBack().setImage(new Image("img/pokemon/passajotabloUncocained.png"));
                 m.setNiveau(m.realLv);
                 Main.player.myLevelProperty.set(""+m.getNiveau());
-                this.setQuantity(this.getQuantity()-1);
+                //this.setQuantity(this.getQuantity()-1);
 
                 break;
             case BASTOS:
@@ -87,8 +93,47 @@ public class Item {
                     if(minNpc!=null){
                         Main.mapPane.getChildren().remove(minNpc.getSprite());
                     }
-                    this.setQuantity(this.getQuantity()-1);
+
                 }
+                break;
+            case SEEInventory:
+                if(BagTransition.k==1) {
+                    if(Player.getPnjMeet().size()==0){
+                        return;
+                    }
+                    Random npc = new Random();
+                    Label label = new Label();
+                    for(Item item : Player.getPnjMeet().get(npc.nextInt(Player.getPnjMeet().size()-1)).getInventaire() ){
+                        label.setText(label.getText()+item.getItemName()+", ");
+                    }
+                    Main.mapPane.getChildren().add(label);
+                    label.setTranslateX(Main.player.previousX1);
+                    label.setTranslateY(Main.player.previousY1);
+                    label.setLayoutX(30);
+                    label.setLayoutY(470);
+                    label.setStyle("-fx-font-weight: bold;-fx-font-size: 20");
+
+                    ImageView dialog = new ImageView("img/zone_texte.png");
+                    dialog.setFitWidth(800);
+                    dialog.setFitHeight(150);
+                    dialog.setLayoutX(0);
+                    dialog.setLayoutY(440);
+                    dialog.setTranslateX(Main.player.previousY1);
+                    dialog.setTranslateY(Main.player.previousY1);
+
+                    Main.mapPane.getChildren().add(dialog);
+                    dialog.setOnMouseClicked(e -> {
+                                Main.pnj1.setInDialog(false);
+                                Main.mapPane.getChildren().remove(dialog);
+                                Main.mapPane.getChildren().remove(label);
+                                Main.player.setBougeable(true);
+                            }
+                    );
+                    BagTransition.bagPane.fireEvent(new BagCloseEvent());
+
+
+                }
+                break;
 
 
         }
@@ -96,7 +141,7 @@ public class Item {
 
     }
 
-    public int getQuantity() {
+    /*public int getQuantity() {
         return quantity;
     }
 
@@ -106,6 +151,8 @@ public class Item {
         }
 
     }
+
+     */
 
     public String getItemName() {
         return itemName;

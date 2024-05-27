@@ -75,6 +75,8 @@ public class Main extends Application{
     public static NPC dealer;
     public static NPC monstre1;
     public static NPC monstre2;
+    public static NPC pnj1;
+    public static NPC pnj2;
 
 
     public static void main(String[] args){
@@ -401,19 +403,22 @@ public class Main extends Application{
 
         mapPane = new Pane(world);
         mapPane.setPrefSize(worldWidth, worldHeight);
-        ArrayList<Item> items= new ArrayList<Item>();
-        items.add(new Item("Potion","Même effet que l'enfant mais en plus éthique",Effet.PVPLUS,10,new ImageView("img/items/potion.png")));
-        items.add(new Item("Bombe Nucléaire","Détruit le monde et arrête le jeu",Effet.PVPLUS,1,new ImageView("img/items/nuclearBomba.png")));
-        items.add(new Item("J'ai envie de passer en ing2 svp...","Vous rend plus riche que Jeff Bezos (sauf que j'ai oublié de mettre l'argent dans le jeu)",Effet.PVPLUS,1,new ImageView("img/items/GéEnviDePasserEnIng2svp.png")));
-                //new Item("Cocaïne","Met votre pokémon lv 999",Effet.COCAINED,0,new ImageView("img/items/cocaine.png")),
-        items.add(new Item("Viagra","Rend votre pokémon bien plus performant",Effet.PVPLUS,1,new ImageView("img/items/viagra.png")));
-        items.add(new Item("Corde","Au cas où après les partiels...",Effet.PVPLUS,1,new ImageView("img/items/corde.png")));
-        items.add(new Item("Enfant","Chef ??? (Soigne votre pokémon)",Effet.PVPLUS,6,new ImageView("img/items/enfant.png")));
-        items.add(new Item("4 Mois de deezer premium","5993-9661-1742-2708",Effet.NULL,1,new ImageView("img/items/deezer.png")));
-        items.add(new Item("Mastercard ****2355","5993 1265 7896 2355 03/26 533",Effet.NULL,1,new ImageView("img/items/mastercard.png")));
-        items.add(new Item("Bastos","Mort douloureuse et atroce au 1er pokémon qui vient",Effet.BASTOS,1,new ImageView("img/items/bastos.png")));
-        items.add(new Item("Lunettes de soleil","Annule l'effet de la cocaïne",Effet.UNCOCAINED,1,new ImageView("img/items/lunettesSoleil.png")));
-
+        Item[] items= new Item[] {
+            new Item("Potion", "Même effet que l'enfant mais en plus éthique", Effet.PVPLUS, new ImageView("img/items/potion.png")),
+            new Item("Lunettes de soleil", "Annule l'effet de la cocaïne", Effet.UNCOCAINED, new ImageView("img/items/lunettesSoleil.png")),
+            new Item("Cocaïne", "Met votre pokémon lv 999", Effet.COCAINED, new ImageView("img/items/cocaine.png")),
+            new Item("Item1", "permet d'afficher le contenu de l'inventaire d'un PNJ rencontré", Effet.SEEInventory, new ImageView("img/items/viagra.png")),
+            null,
+        };
+        //items.add(new Item("Bombe Nucléaire","Détruit le monde et arrête le jeu",Effet.PVPLUS,1,new ImageView("img/items/nuclearBomba.png")));
+        //items.add(new Item("J'ai envie de passer en ing2 svp...","Vous rend plus riche que Jeff Bezos (sauf que j'ai oublié de mettre l'argent dans le jeu)",Effet.PVPLUS,1,new ImageView("img/items/GéEnviDePasserEnIng2svp.png")));
+        //new Item("Cocaïne","Met votre pokémon lv 999",Effet.COCAINED,0,new ImageView("img/items/cocaine.png")),
+        //items.add(new Item("Viagra","Rend votre pokémon bien plus performant",Effet.PVPLUS,1,new ImageView("img/items/viagra.png")));
+        //items.add(new Item("Corde","Au cas où après les partiels...",Effet.PVPLUS,1,new ImageView("img/items/corde.png")));
+        //items.add(new Item("Enfant","Chef ??? (Soigne votre pokémon)",Effet.PVPLUS,6,new ImageView("img/items/enfant.png")));
+        //items.add(new Item("4 Mois de deezer premium","5993-9661-1742-2708",Effet.NULL,1,new ImageView("img/items/deezer.png")));
+        //items.add(new Item("Mastercard ****2355","5993 1265 7896 2355 03/26 533",Effet.NULL,1,new ImageView("img/items/mastercard.png")));
+        //items.add(new Item("Bastos","Mort douloureuse et atroce au 1er pokémon qui vient",Effet.BASTOS,1,new ImageView("img/items/bastos.png")));
 
         player=new Player(900, "Bryan",items,new Monster(new ImageView("img/pokemon/passajotablo.png"),new ImageView("img/pokemon/passajotablo2.png"),1,10,1,1,50,0,new Capacite[]{},"Passajotablo"));
 
@@ -436,6 +441,26 @@ public class Main extends Application{
         monstre2.getSprite().setFitHeight(70);
         monstre2.getSprite().setTranslateX(1500);
         monstre2.getSprite().setLayoutY(300);
+
+        pnj1= new NPC("Le PNJ1",new String[]{"...",""},false,new ImageView("img/npc/dealer.png"),Effet.DEALER,new Item[]{new Item("Item1", "permet d'afficher le contenu de l'inventaire d'un PNJ rencontré", Effet.SEEInventory, new ImageView("img/items/viagra.png"))},new int[]{0,1},false,new String[]{"Oui","Non"});
+        pnj1.getSprite().setFitWidth(70);
+        pnj1.getSprite().setFitHeight(70);
+        pnj1.getSprite().setLayoutX(500);
+        pnj1.getSprite().setLayoutY(500);
+        pnj1.getSprite().setTranslateX(1850);
+        pnj1.getSprite().setTranslateY(250);
+        mapPane.getChildren().add(pnj1.getSprite());
+
+        pnj2= new NPC("Le PNJ2",new String[]{"...",""},false,new ImageView("img/npc/dealer.png"),Effet.DEALER,new Item[]{new Item("Item1", "permet d'afficher le contenu de l'inventaire d'un PNJ rencontré", Effet.SEEInventory, new ImageView("img/items/viagra.png"))},new int[]{0,1},false,new String[]{"Oui","Non"});
+        pnj2.getSprite().setFitWidth(70);
+        pnj2.getSprite().setFitHeight(70);
+        pnj2.getSprite().setLayoutX(500);
+        pnj2.getSprite().setLayoutY(500);
+        pnj2.getSprite().setTranslateX(2050);
+        pnj2.getSprite().setTranslateY(250);
+        mapPane.getChildren().add(pnj2.getSprite());
+
+
 
         lstNPC = new NPC[]{dealer,monstre1,monstre2};
 
@@ -470,13 +495,13 @@ public class Main extends Application{
         dealer.getSprite().setTranslateY(-350);
 
 
-        player.getCorps().setLayoutX(characterX);
-        player.getCorps().setLayoutY(characterY);
+        player.getCorps().setLayoutX(300);
+        player.getCorps().setLayoutY(300);
 
-        player.getCorps().setTranslateX(831);
-        player.getCorps().setTranslateY(400);
-        mapPane.setTranslateX(-831);
-        mapPane.setTranslateY(-400);
+        player.getCorps().setTranslateX(1950);
+        player.getCorps().setTranslateY(700);
+        mapPane.setTranslateX(-1950);
+        mapPane.setTranslateY(-700);
 
 
 

@@ -42,7 +42,7 @@ public class BagTransition {
     private static GridPane bagGrid;
 
     private static Label itemDescription;
-    private static Label itemQuantity;
+    //private static Label itemQuantity;
     private static Label itemName;
 
     private static Label lvPokemon;
@@ -52,8 +52,9 @@ public class BagTransition {
     public static void genGridPane() {
         int n = 0;
         int l = 0;
-        for (int m = 0; m < Main.player.getInventaire().size(); m++) {
-            if (Main.player.getInventaire().get(m).getQuantity() > 0) {
+        for (int m = 0; m < Main.player.getInventaire().length; m++) {
+            if (Main.player.getInventaire()[m] != null) {
+                //if (Main.player.getInventaire().get(m).getQuantity() > 0) {
 
 
                 if (m % 8 == 0) {
@@ -62,26 +63,29 @@ public class BagTransition {
                 }
 
 
-                bagGrid.add(Main.player.getInventaire().get(m).getItemImage(), n, l);
-                Main.player.getInventaire().get(m).getItemImage().setOnMouseClicked((e) -> {
+                bagGrid.add(Main.player.getInventaire()[m].getItemImage(), n, l);
+                Main.player.getInventaire()[m].getItemImage().setOnMouseClicked((e) -> {
 
                     itemPlusGrand.setImage(((ImageView) e.getTarget()).getImage());
 
-                    for (int j = 0; j < Main.player.getInventaire().size(); j++) {
-                        if (Main.player.getInventaire().get(j).getItemImage().equals((e.getTarget()))) {
+                    for (int j = 0; j < Main.player.getInventaire().length; j++) {
+                        if(Main.player.getInventaire()[j]!=null) {
+                            if (Main.player.getInventaire()[j].getItemImage().equals((e.getTarget()))) {
 
-                            itemDescription.setText(Main.player.getInventaire().get(j).getItemDescription());
-                            itemQuantity.setText("Quantité : " + Main.player.getInventaire().get(j).getQuantity());
-                            itemName.setText(Main.player.getInventaire().get(j).getItemName());
+                                itemDescription.setText(Main.player.getInventaire()[j].getItemDescription());
+                                //itemQuantity.setText("Quantité : " + Main.player.getInventaire().get(j).getQuantity());
+                                itemName.setText(Main.player.getInventaire()[j].getItemName());
+                            }
                         }
                     }
 
 
                 });
                 n++;
+
             }
         }
-}
+    }
 
 
 
@@ -210,22 +214,31 @@ public class BagTransition {
         b_use.getStylesheets().add("css/fuite.css");
         b_use.setVisible(true);
         b_use.setOnMouseClicked(e -> {
-            for (int u = 0; u < Main.player.getInventaire().size(); u++) {
+            for (int u = 0; u < Main.player.getInventaire().length; u++) {
+                if (Main.player.getInventaire()[u] != null) {
+                    if (Main.player.getInventaire()[u].getItemImage().getImage() == itemPlusGrand.getImage()) {
+                        if(Main.player.getInventaire()[u].getItemName()=="Item1"){
+                            if(Player.getPnjMeet().size()>0){
+                                Main.player.getInventaire()[u].useItem(Main.player.getPoke());
+                            }
+                        }
+                        else {
+                            Main.player.getInventaire()[u].useItem(Main.player.getPoke());
+                        }
 
-                if (Main.player.getInventaire().get(u).getItemImage().getImage()== itemPlusGrand.getImage()) {
-                    Main.player.getInventaire().get(u).useItem(Main.player.getPoke());
-                    itemQuantity.setText("Quantité : " + Main.player.getInventaire().get(u).getQuantity());
-                    if (Main.player.getInventaire().get(u).getQuantity() == 0) {
-                        bagGrid.getChildren().remove(Main.player.getInventaire().get(u).getItemImage());
+                        bagGrid.getChildren().remove(Main.player.getInventaire()[u].getItemImage());
+
 
                         itemDescription.setText("");
-                        itemQuantity.setText("");
+
                         itemName.setText("");
                         itemPlusGrand.setImage(null);
-                    }
 
-                    bagGrid.getChildren().clear();
-                    genGridPane();
+                        Main.player.removeInventory(Main.player.getInventaire()[u]);
+
+                        bagGrid.getChildren().clear();
+                        genGridPane();
+                    }
                 }
             }
 
@@ -255,13 +268,14 @@ public class BagTransition {
         itemDescription.setStyle("-fx-font-size: 15px;");
         bagPane.getChildren().add(itemDescription);
 
+        /*
         itemQuantity = new Label();
         itemQuantity.setLayoutX(150);
         itemQuantity.setLayoutY(540);
         itemQuantity.setTextFill(Color.BLACK);
         itemQuantity.setStyle("-fx-font-size: 15px;");
         bagPane.getChildren().add(itemQuantity);
-
+*/
 
         genGridPane();
 

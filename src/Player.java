@@ -28,7 +28,8 @@ public class Player {
     private String nom;
     //private Tenue tenue;
     public Thread battleThread;
-    private ArrayList<Item> inventaire;
+    private Item[] inventaire;
+    public static int index=4;
 
     private static int compteurTour=0;
     private Monster poke;
@@ -36,8 +37,8 @@ public class Player {
     private int currentFrame = 0;
 
     private boolean isBougeable;
-    private double previousX1;
-    private double previousY1;
+    double previousX1;
+    double previousY1;
     private double previousX2;
     private double previousY2;
 
@@ -71,10 +72,38 @@ public class Player {
 
     public static StringProperty labelProperty=new SimpleStringProperty("TEST");
 
-    private Rectangle2D colliderBox;
+    public static ArrayList<NPC> getPnjMeet() {
+        return pnjMeet;
+    }
+
+    public static void setPnjMeet(ArrayList<NPC> pnjMeet) {
+        Player.pnjMeet = pnjMeet;
+    }
+
+    private static ArrayList<NPC> pnjMeet=new ArrayList<>();
 
 
-    public Player(int pv, String nom, ArrayList<Item> inventaire, Monster poke){
+
+    public void removeInventory(Item item) {
+        for (int i = 0; i < inventaire.length; i++) {
+            if (inventaire[i] == item) {
+                inventaire[i] = null;
+
+            }
+        }
+    }
+
+    public void addInventory(Item item){
+
+        for(int i=0;i<inventaire.length;i++){
+            if(inventaire[i]==null){
+                inventaire[i]=item;
+                break;
+            }
+        }
+    }
+
+    public Player(int pv, String nom, Item[] inventaire, Monster poke){
 
 
         this.world=((World)mapPane.getChildren().get(0));
@@ -92,6 +121,8 @@ public class Player {
             }
 
         });
+
+
 
 
 
@@ -459,7 +490,10 @@ public class Player {
         mapPane.setTranslateX(mapPane.getTranslateX() + dx);
         mapPane.setTranslateY(mapPane.getTranslateY() + dy);
 
-
+        for(int i =0;i<getInventaire().length;i++) {
+            System.out.println(getInventaire()[i]);
+            System.out.println(getInventaire().length);
+        }
         for(int i =0;i<world.getChildren().size();i++){
 
             if(this.getCorps().getBoundsInParent().intersects(world.getChildren().get(i).getBoundsInParent())){
@@ -668,17 +702,10 @@ public class Player {
                                     //setBougeable(true);
                                     //a = 0;
                                     //Main.dealer.setInDialog(false);
-                                    boolean found=false;
-                                    for(int v=0; v<getInventaire().size();v++){
-                                        if(getInventaire().get(v).getItemName()=="Cocaïne"){
-                                            getInventaire().get(v).setQuantity(getInventaire().get(v).getQuantity()+1);
-                                            found=true;
-                                        }
-                                    }
-                                    if(!found){
-                                        getInventaire().add(new Item("Cocaïne","Met votre pokémon lv 999",Effet.COCAINED,1,new ImageView("img/items/cocaine.png")));
+                                    System.out.println(index);
+                                    addInventory(new Item("Cocaïne","Met votre pokémon lv 999",Effet.COCAINED,new ImageView("img/items/cocaine.png")));
 
-                                    }
+
                                     label.setText("Vous avez reçu de la cocaïne");
                                     dialog.setOnMouseClicked( event2 ->{
                                         Main.mapPane.getChildren().remove(dialog);
@@ -714,6 +741,51 @@ public class Player {
 
                         });
                     }
+                }
+                else if(Objects.equals(world.getCollisionTab()[GridPane.getRowIndex(world.getChildren().get(i))][GridPane.getColumnIndex(world.getChildren().get(i))], "4")){
+                    this.getCorps().setTranslateX(previousX1);
+                    this.getCorps().setTranslateY(previousY1);
+                    mapPane.setTranslateX(previousX2);
+                    mapPane.setTranslateY(previousY2);
+                    if(!Main.pnj1.isInDialog()) {
+
+                        Main.pnj1.setInDialog(true);
+
+                        this.isBougeable = false;
+                        ImageView dialog = new ImageView("img/zone_texte.png");
+                        Main.mapPane.getChildren().add(dialog);
+                        dialog.setFitWidth(800);
+                        dialog.setFitHeight(150);
+                        dialog.setLayoutX(0);
+                        dialog.setLayoutY(440);
+                        dialog.setTranslateX(previousX1);
+                        dialog.setTranslateY(previousY1);
+                        String lstInventaire = "";
+                        for (int j = 0; j < Main.pnj1.getInventaire().length; j++) {
+                            if (Main.pnj1.getInventaire()[j] != null) {
+                                lstInventaire += Main.pnj1.getInventaire()[j].getItemName() + ", ";
+                            }
+                        }
+                        if (lstInventaire == "") {
+                            lstInventaire = "Je ne possède rien";
+                        }
+                        Label label = new Label(Main.pnj1.getName() + ":\n" + lstInventaire);
+                        label.setTranslateX(previousX1);
+                        label.setTranslateY(previousY1);
+                        label.setLayoutX(30);
+                        label.setLayoutY(470);
+                        label.setStyle("-fx-font-weight: bold;-fx-font-size: 20");
+                        Main.mapPane.getChildren().add(label);
+
+                        dialog.setOnMouseClicked(e -> {
+                            Main.pnj1.setInDialog(false);
+                            Main.mapPane.getChildren().remove(dialog);
+                            Main.mapPane.getChildren().remove(label);
+                            this.isBougeable = true;
+                        }
+                        );
+
+                }
                 }
 
 
@@ -771,11 +843,11 @@ public class Player {
         this.poke = poke;
     }
 
-    public ArrayList<Item> getInventaire() {
+    public Item[] getInventaire() {
         return inventaire;
     }
 
-    public void setInventaire(ArrayList<Item> inventaire) {
+    public void setInventaire(Item[] inventaire) {
         this.inventaire = inventaire;
     }
 
