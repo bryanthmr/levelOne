@@ -408,7 +408,7 @@ public class Main extends Application{
             new Item("Lunettes de soleil", "Annule l'effet de la cocaïne", Effet.UNCOCAINED, new ImageView("img/items/lunettesSoleil.png")),
             new Item("Cocaïne", "Met votre pokémon lv 999", Effet.COCAINED, new ImageView("img/items/cocaine.png")),
             new Item("Item1", "permet d'afficher le contenu de l'inventaire d'un PNJ rencontré", Effet.SEEInventory, new ImageView("img/items/viagra.png")),
-            null,
+                new Item("Item2", "permet de voler le contenu de l'inventaire d'un PNJ rencontré", Effet.SEEInventory, new ImageView("img/items/bastos.png")),
         };
         //items.add(new Item("Bombe Nucléaire","Détruit le monde et arrête le jeu",Effet.PVPLUS,1,new ImageView("img/items/nuclearBomba.png")));
         //items.add(new Item("J'ai envie de passer en ing2 svp...","Vous rend plus riche que Jeff Bezos (sauf que j'ai oublié de mettre l'argent dans le jeu)",Effet.PVPLUS,1,new ImageView("img/items/GéEnviDePasserEnIng2svp.png")));
@@ -442,7 +442,7 @@ public class Main extends Application{
         monstre2.getSprite().setTranslateX(1500);
         monstre2.getSprite().setLayoutY(300);
 
-        pnj1= new NPC("Le PNJ1",new String[]{"...",""},false,new ImageView("img/npc/dealer.png"),Effet.DEALER,new Item[]{new Item("Item1", "permet d'afficher le contenu de l'inventaire d'un PNJ rencontré", Effet.SEEInventory, new ImageView("img/items/viagra.png"))},new int[]{0,1},false,new String[]{"Oui","Non"});
+        pnj1= new NPC("Le PNJ1",new String[]{"...",""},false,new ImageView("img/npc/dealer.png"),Effet.DEALER,new Item[]{new Item("Item2", "p ermetdevolerauchoixunitemdel'inventaire d'un PNJ rencontré", Effet.StoleInventory, new ImageView("img/items/bastos.png")),new Item("Item2", "p ermetdevolerauchoixunitemdel'inventaire d'un PNJ rencontré", Effet.StoleInventory, new ImageView("img/items/bastos.png")),new Item("Item1", "permet d'afficher le contenu de l'inventaire d'un PNJ rencontré", Effet.SEEInventory, new ImageView("img/items/viagra.png")),new Item("Item1", "permet d'afficher le contenu de l'inventaire d'un PNJ rencontré", Effet.SEEInventory, new ImageView("img/items/viagra.png")),new Item("Item1", "permet d'afficher le contenu de l'inventaire d'un PNJ rencontré", Effet.SEEInventory, new ImageView("img/items/viagra.png"))},new int[]{0,1},false,new String[]{"Oui","Non"});
         pnj1.getSprite().setFitWidth(70);
         pnj1.getSprite().setFitHeight(70);
         pnj1.getSprite().setLayoutX(500);
@@ -451,7 +451,7 @@ public class Main extends Application{
         pnj1.getSprite().setTranslateY(250);
         mapPane.getChildren().add(pnj1.getSprite());
 
-        pnj2= new NPC("Le PNJ2",new String[]{"...",""},false,new ImageView("img/npc/dealer.png"),Effet.DEALER,new Item[]{new Item("Item1", "permet d'afficher le contenu de l'inventaire d'un PNJ rencontré", Effet.SEEInventory, new ImageView("img/items/viagra.png"))},new int[]{0,1},false,new String[]{"Oui","Non"});
+        pnj2= new NPC("Le PNJ2",new String[]{"...",""},false,new ImageView("img/npc/dealer.png"),Effet.DEALER,new Item[]{new Item("Item2", "p ermetdevolerauchoixunitemdel'inventaire d'un PNJ rencontré", Effet.StoleInventory, new ImageView("img/items/bastos.png")),new Item("Item2", "p ermetdevolerauchoixunitemdel'inventaire d'un PNJ rencontré", Effet.StoleInventory, new ImageView("img/items/bastos.png")),new Item("Item1", "permet d'afficher le contenu de l'inventaire d'un PNJ rencontré", Effet.SEEInventory, new ImageView("img/items/viagra.png")),new Item("Item1", "permet d'afficher le contenu de l'inventaire d'un PNJ rencontré", Effet.SEEInventory, new ImageView("img/items/viagra.png")),new Item("Item1", "permet d'afficher le contenu de l'inventaire d'un PNJ rencontré", Effet.SEEInventory, new ImageView("img/items/viagra.png"))},new int[]{0,1},false,new String[]{"Oui","Non"});
         pnj2.getSprite().setFitWidth(70);
         pnj2.getSprite().setFitHeight(70);
         pnj2.getSprite().setLayoutX(500);

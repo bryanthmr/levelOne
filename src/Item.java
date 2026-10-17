@@ -1,8 +1,10 @@
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Item {
@@ -96,6 +98,34 @@ public class Item {
 
                 }
                 break;
+            case StoleInventory:
+                if(BagTransition.k==1) {
+                    if(Player.getPnjMeet().size()==0){
+                        return;
+                    }
+                    Random npc = new Random();
+                    BagTransition.bagPane.fireEvent(new BagCloseEvent());
+                    Label label = new Label("Vous voulez voler: ");
+                    ArrayList<Button> buttons = new ArrayList<>();
+                    for(Item item : Player.getPnjMeet().get(npc.nextInt(Player.getPnjMeet().size())).getInventaire() ){
+                        buttons.add(new Button(item.getItemName()));
+                        BagTransition.bagPane.getChildren().add(buttons.get(buttons.size()-1));
+
+                        buttons.get(buttons.size()-1).setOnMouseClicked(e -> {
+                            Main.player.addInventory(item);
+                            Main.mapPane.getChildren().remove(label);
+                            for(Button button : buttons){
+                                Main.mapPane.getChildren().remove(button);
+                            }
+                            Main.player.setBougeable(true);
+                        });
+                    }
+                    Main.mapPane.getChildren().add(label);
+                    label.setTranslateX(Main.player.previousX1);
+                    label.setTranslateY(Main.player.previousY1);
+                    label.setLayoutX(30);
+                    label.setLayoutY(470);
+                }
             case SEEInventory:
                 if(BagTransition.k==1) {
                     if(Player.getPnjMeet().size()==0){
@@ -103,7 +133,7 @@ public class Item {
                     }
                     Random npc = new Random();
                     Label label = new Label();
-                    for(Item item : Player.getPnjMeet().get(npc.nextInt(Player.getPnjMeet().size()-1)).getInventaire() ){
+                    for(Item item : Player.getPnjMeet().get(npc.nextInt(Player.getPnjMeet().size())).getInventaire() ){
                         label.setText(label.getText()+item.getItemName()+", ");
                     }
                     Main.mapPane.getChildren().add(label);
@@ -111,7 +141,7 @@ public class Item {
                     label.setTranslateY(Main.player.previousY1);
                     label.setLayoutX(30);
                     label.setLayoutY(470);
-                    label.setStyle("-fx-font-weight: bold;-fx-font-size: 20");
+
 
                     ImageView dialog = new ImageView("img/zone_texte.png");
                     dialog.setFitWidth(800);

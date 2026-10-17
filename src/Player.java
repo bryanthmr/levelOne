@@ -742,13 +742,59 @@ public class Player {
                         });
                     }
                 }
+                else if(Objects.equals(world.getCollisionTab()[GridPane.getRowIndex(world.getChildren().get(i))][GridPane.getColumnIndex(world.getChildren().get(i))], "5")){
+
+                    this.getCorps().setTranslateX(previousX1);
+                    this.getCorps().setTranslateY(previousY1);
+                    mapPane.setTranslateX(previousX2);
+                    mapPane.setTranslateY(previousY2);
+                    if(!Main.pnj2.isInDialog()) {
+                        Player.getPnjMeet().add(Main.pnj2);
+                        Main.pnj2.setInDialog(true);
+
+                        this.isBougeable = false;
+                        ImageView dialog = new ImageView("img/zone_texte.png");
+                        Main.mapPane.getChildren().add(dialog);
+                        dialog.setFitWidth(800);
+                        dialog.setFitHeight(150);
+                        dialog.setLayoutX(0);
+                        dialog.setLayoutY(440);
+                        dialog.setTranslateX(previousX1);
+                        dialog.setTranslateY(previousY1);
+                        String lstInventaire = "";
+                        for (int j = 0; j < Main.pnj2.getInventaire().length; j++) {
+                            if (Main.pnj2.getInventaire()[j] != null) {
+                                lstInventaire += Main.pnj2.getInventaire()[j].getItemName() + ", ";
+                            }
+                        }
+                        if (lstInventaire == "") {
+                            lstInventaire = "Je ne possède rien";
+                        }
+                        Label label = new Label(Main.pnj2.getName() + ":\n" + lstInventaire);
+                        label.setTranslateX(previousX1);
+                        label.setTranslateY(previousY1);
+                        label.setLayoutX(30);
+                        label.setLayoutY(470);
+                        label.setStyle("-fx-font-weight: bold;-fx-font-size: 20");
+                        Main.mapPane.getChildren().add(label);
+
+                        dialog.setOnMouseClicked(e -> {
+                                    Main.pnj2.setInDialog(false);
+                                    Main.mapPane.getChildren().remove(dialog);
+                                    Main.mapPane.getChildren().remove(label);
+                                    this.isBougeable = true;
+                                }
+                        );
+
+                    }
+                    }
                 else if(Objects.equals(world.getCollisionTab()[GridPane.getRowIndex(world.getChildren().get(i))][GridPane.getColumnIndex(world.getChildren().get(i))], "4")){
                     this.getCorps().setTranslateX(previousX1);
                     this.getCorps().setTranslateY(previousY1);
                     mapPane.setTranslateX(previousX2);
                     mapPane.setTranslateY(previousY2);
                     if(!Main.pnj1.isInDialog()) {
-
+                        Player.getPnjMeet().add(Main.pnj1);
                         Main.pnj1.setInDialog(true);
 
                         this.isBougeable = false;
